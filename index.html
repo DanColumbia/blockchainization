@@ -797,6 +797,317 @@ footer {
   .section-title h2 { font-size: 28px; }
 }
 
+/* 路线图时间线 */
+.timeline {
+  position: relative;
+  margin: 40px 0 80px;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--line-strong) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 24px 0 32px 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 32px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  border-radius: 50%;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 38px;
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+
+.timeline-phase {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.timeline-phase .phase-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+}
+
+.timeline-phase .phase-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.timeline-phase .phase-duration {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border: 1px solid var(--line-strong);
+}
+
+.timeline-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+  max-width: 760px;
+}
+
+.timeline-deliverables {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  max-width: 760px;
+}
+
+.timeline-deliverable {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text);
+  padding: 6px 0;
+}
+
+.timeline-deliverable::before {
+  content: '◆';
+  color: var(--accent);
+  font-size: 8px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* 双栏对照（合作方提供 vs 公司配合）*/
+.cooperation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin: 40px 0 80px;
+}
+
+.coop-col {
+  background: var(--bg-card);
+  padding: 40px 36px;
+  position: relative;
+}
+
+.coop-col::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 60px;
+}
+
+.coop-col.provider::before { background: var(--accent); }
+.coop-col.client::before { background: var(--blue); }
+
+.coop-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+.coop-col.provider .coop-label { color: var(--accent); }
+.coop-col.client .coop-label { color: var(--blue); }
+
+.coop-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.coop-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.coop-category {
+  margin-bottom: 28px;
+}
+
+.coop-category:last-child { margin-bottom: 0; }
+
+.coop-cat-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.coop-cat-title .cat-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+  padding: 2px 8px;
+  background: var(--accent-soft);
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.coop-col.client .coop-cat-title .cat-num {
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.coop-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.coop-list li {
+  padding: 10px 0 10px 22px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.coop-list li:last-child { border-bottom: none; }
+
+.coop-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 10px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.coop-col.client .coop-list li::before { background: var(--blue); }
+
+.coop-list li strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
+.coop-list li span {
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+/* 关键成功要素 */
+.success-factors {
+  margin: 32px 0 80px;
+  padding: 36px 40px;
+  background: linear-gradient(135deg, rgba(200, 169, 106, 0.06), rgba(91, 139, 201, 0.03));
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--accent);
+}
+
+.success-factors h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.success-factors > p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+.factor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.factor-item {
+  padding: 0;
+}
+
+.factor-item .factor-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.factor-item h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.factor-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .cooperation-grid { grid-template-columns: 1fr; }
+  .timeline-deliverables { grid-template-columns: 1fr; }
+  .factor-grid { grid-template-columns: 1fr; gap: 20px; }
+  .timeline { padding-left: 20px; }
+  .coop-col { padding: 28px 24px; }
+  .success-factors { padding: 24px 20px; }
+}
+
 /* 滚动条 */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -880,11 +1191,221 @@ footer {
   </section>
 
   <div class="section-title">
-    <h2><span class="num">01 / 09</span>部门视图</h2>
+    <h2><span class="num">01 / 03</span>部门视图</h2>
     <p>点击任一部门 · 查看完整方案</p>
   </div>
 
   <div class="dept-grid" id="deptGrid"></div>
+
+  <!-- 改造步骤路线图 -->
+  <div class="section-title">
+    <h2><span class="num">02 / 03</span>改造步骤</h2>
+    <p>四阶段实施路线 · 18个月落地</p>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-phase">
+        <span class="phase-num">PHASE I</span>
+        <span class="phase-title">顶层设计与基础设施搭建</span>
+        <span class="phase-duration">第 1 - 3 月</span>
+      </div>
+      <p class="timeline-desc">
+        本阶段聚焦于不动业务的前提下完成所有"地基"工作。需求调研、与各方签署节点运营协议（公司、董事会、监事会、外部审计、主要股东）、采购硬件加密机、搭建联盟链网络。这一阶段的关键不是技术，而是<em>把多方治理的法律框架先立起来</em>。
+      </p>
+      <div class="timeline-deliverables">
+        <div class="timeline-deliverable">完成业务需求调研与风险点梳理</div>
+        <div class="timeline-deliverable">联盟链节点运营协议签署</div>
+        <div class="timeline-deliverable">Hyperledger Fabric 网络部署</div>
+        <div class="timeline-deliverable">HSM 硬件加密机采购与配置</div>
+        <div class="timeline-deliverable">节点运营方密钥多签机制建立</div>
+        <div class="timeline-deliverable">总体技术方案与白皮书定稿</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-phase">
+        <span class="phase-num">PHASE II</span>
+        <span class="phase-title">核心反腐板块上链</span>
+        <span class="phase-duration">第 4 - 9 月</span>
+      </div>
+      <p class="timeline-desc">
+        优先打通财务、合同、行政印章三个高风险板块，这是反腐的"七寸"，也最容易在短期内向股东兑现信任收益。本阶段开始与现有 ERP/财务系统进行 API 对接，部署中间件层，完成核心智能合约开发与测试。
+      </p>
+      <div class="timeline-deliverables">
+        <div class="timeline-deliverable">财务系统：凭证与付款上链</div>
+        <div class="timeline-deliverable">合同管理：电子签署与履约存证</div>
+        <div class="timeline-deliverable">智能印章硬件部署与上链对接</div>
+        <div class="timeline-deliverable">Kafka 中间件与签名网关上线</div>
+        <div class="timeline-deliverable">异常监控、关联交易合约部署</div>
+        <div class="timeline-deliverable">第一次内审节点试运行</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-phase">
+        <span class="phase-num">PHASE III</span>
+        <span class="phase-title">业务系统全面接入</span>
+        <span class="phase-duration">第 10 - 15 月</span>
+      </div>
+      <p class="timeline-desc">
+        将进销存、采购、销售、HR 等业务系统陆续接入。这一阶段难点是组织变革——业务部门需要适应"动作即留痕"的新工作模式，并对历史数据迁移做出取舍。建议同步启动内审培训，让内审人员真正能驾驭链上工具。
+      </p>
+      <div class="timeline-deliverables">
+        <div class="timeline-deliverable">采购、销售、库存系统接入</div>
+        <div class="timeline-deliverable">HR 隐私通道（Channel）上线</div>
+        <div class="timeline-deliverable">IT 主数据治理与权限上链</div>
+        <div class="timeline-deliverable">合规审查、审计取证合约部署</div>
+        <div class="timeline-deliverable">业务部门全员培训</div>
+        <div class="timeline-deliverable">内审风险驾驶舱正式启用</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-phase">
+        <span class="phase-num">PHASE IV</span>
+        <span class="phase-title">股东监督平台与治理闭环</span>
+        <span class="phase-duration">第 16 - 18 月</span>
+      </div>
+      <p class="timeline-desc">
+        最后阶段聚焦于把链上数据真正"亮"给股东。开发股东穿透式监督平台，与外部审计工作流深度整合，建立董事会信息披露的链上闭环。至此，整套治理区块链化转型完成，进入持续运营与合约迭代阶段。
+      </p>
+      <div class="timeline-deliverables">
+        <div class="timeline-deliverable">股东监督平台上线</div>
+        <div class="timeline-deliverable">董事会决议链上化</div>
+        <div class="timeline-deliverable">外部审计工作流集成</div>
+        <div class="timeline-deliverable">第一份"链上年度治理报告"</div>
+        <div class="timeline-deliverable">运营 SLA 与变更管理建立</div>
+        <div class="timeline-deliverable">下一年度合约迭代规划</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 合作方提供 vs 公司配合 -->
+  <div class="section-title">
+    <h2><span class="num">03 / 03</span>合作框架</h2>
+    <p>外部合作方提供 · 公司配合事项</p>
+  </div>
+
+  <div class="cooperation-grid">
+
+    <div class="coop-col provider">
+      <div class="coop-label">External Partner / 我方提供</div>
+      <h3 class="coop-title">外部合作方</h3>
+      <p class="coop-subtitle">技术、方法论、第三方独立性</p>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">A.01</span>技术架构与底层平台</div>
+        <ul class="coop-list">
+          <li><strong>联盟链平台搭建</strong><span>Hyperledger Fabric 网络部署、节点运维、版本升级</span></li>
+          <li><strong>智能合约开发</strong><span>四大类核心合约（异常监控、关联交易、合规审查、审计取证）的编码、测试、部署</span></li>
+          <li><strong>中间件层建设</strong><span>Kafka 消息队列、签名网关、与现有业务系统的 API 适配器</span></li>
+          <li><strong>密钥与安全体系</strong><span>HSM 硬件加密机集成、多签方案设计、密钥分发管理</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">A.02</span>方法论与咨询</div>
+        <ul class="coop-list">
+          <li><strong>治理风险评估</strong><span>梳理公司当前治理薄弱环节、识别上链优先级</span></li>
+          <li><strong>反腐规则库设计</strong><span>结合行业特性定制智能合约阈值与告警规则</span></li>
+          <li><strong>内控制度配套修订</strong><span>协助修改授权审批、用印、采购等管理制度，与链上规则匹配</span></li>
+          <li><strong>组织变革管理</strong><span>业务部门、IT、内审的角色重构建议</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">A.03</span>培训与持续运营</div>
+        <ul class="coop-list">
+          <li><strong>分层培训体系</strong><span>董事会层、管理层、内审、IT、业务用户的差异化培训课程</span></li>
+          <li><strong>第三方独立节点托管</strong><span>提供独立于公司IT的节点运营服务，保障链的独立性</span></li>
+          <li><strong>运营 SLA 保障</strong><span>7×24 监控、故障响应、合约升级、版本迭代</span></li>
+          <li><strong>年度治理审计支持</strong><span>配合外部年审会计师对链上数据进行验证</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">A.04</span>资质与可信背书</div>
+        <ul class="coop-list">
+          <li><strong>区块链信息服务备案</strong><span>协助完成网信办区块链备案，符合国内合规要求</span></li>
+          <li><strong>等保三级认证</strong><span>系统通过等保三级测评，满足金融级安全标准</span></li>
+          <li><strong>司法存证对接</strong><span>与公证处、互联网法院的存证接口对接</span></li>
+          <li><strong>知识产权保障</strong><span>合约源码托管、应急响应预案、长期维护承诺</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="coop-col client">
+      <div class="coop-label">Client Side / 贵公司配合</div>
+      <h3 class="coop-title">公司配合事项</h3>
+      <p class="coop-subtitle">领导力、数据、流程、人员</p>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">B.01</span>顶层支持与组织保障</div>
+        <ul class="coop-list">
+          <li><strong>董事会决议授权</strong><span>项目立项、节点运营协议、预算审批等需董事会正式决议</span></li>
+          <li><strong>一把手挂帅</strong><span>由董事长或总经理担任项目第一责任人，推动跨部门协同</span></li>
+          <li><strong>专项工作组成立</strong><span>由内审、财务、IT、法务、董秘办抽调骨干组成专班</span></li>
+          <li><strong>预算与资源到位</strong><span>建设期 300-800 万元 + 年运维 100-200 万元的预算保障</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">B.02</span>数据与系统开放</div>
+        <ul class="coop-list">
+          <li><strong>现有系统接口开放</strong><span>ERP、财务、进销存、合同管理系统的 API 调用权限</span></li>
+          <li><strong>数据字典与流程文档</strong><span>提供各业务系统的数据结构、业务流程、审批规则文档</span></li>
+          <li><strong>员工亲属关系申报</strong><span>建立员工亲属库，作为关联交易识别的基础数据</span></li>
+          <li><strong>历史数据迁移决策</strong><span>就历史数据是否回溯上链做出决策（建议从某一基准日起）</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">B.03</span>制度与流程改造</div>
+        <ul class="coop-list">
+          <li><strong>授权管理制度修订</strong><span>明确各级审批权限，并将其编码为智能合约规则</span></li>
+          <li><strong>用印管理升级</strong><span>采购智能印章硬件，废止纸质用印登记本</span></li>
+          <li><strong>合同电子化转型</strong><span>选定电子签约平台、推动重要合同全部电子签署</span></li>
+          <li><strong>异常告警处置流程</strong><span>建立链上告警的分级处置机制（关闭/升级/移交）</span></li>
+        </ul>
+      </div>
+
+      <div class="coop-category">
+        <div class="coop-cat-title"><span class="cat-num">B.04</span>人员与文化配合</div>
+        <ul class="coop-list">
+          <li><strong>关键岗位参与培训</strong><span>财务、采购、合同、印章管理等关键岗位人员强制培训</span></li>
+          <li><strong>业务部门接受新流程</strong><span>从"自由操作"转变为"合规留痕"的工作模式</span></li>
+          <li><strong>内审独立性保障</strong><span>内审部门向董事会而非 CEO 直接汇报，调整组织汇报关系</span></li>
+          <li><strong>容忍短期摩擦</strong><span>初期可能出现流程变慢、告警过多等阵痛，需要管理层定力支持</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 关键成功要素 -->
+  <div class="success-factors">
+    <h3>项目能否成功的三个关键</h3>
+    <p>technology is easy, the hard part is governance itself</p>
+    <div class="factor-grid">
+      <div class="factor-item">
+        <div class="factor-num">01</div>
+        <h4>一把手定力</h4>
+        <p>区块链化必然让一些人不舒服。如果一把手在第一次"链上告警涉及到熟人"时退缩，整个项目就废了。需要顶层有"我自己也接受被监督"的觉悟。</p>
+      </div>
+      <div class="factor-item">
+        <div class="factor-num">02</div>
+        <h4>数据源头质量</h4>
+        <p>区块链只能保证"上链后不被改"，无法保证"上链时为真"。源头数据采集必须配合摄像头、电子签名、多人复核等物理与制度手段，否则就是"垃圾不可篡改地永远存着"。</p>
+      </div>
+      <div class="factor-item">
+        <div class="factor-num">03</div>
+        <h4>外部节点真独立</h4>
+        <p>如果监事会节点、审计节点、股东节点都还是公司IT在维护，就是"自己监督自己"。这些节点必须由独立第三方运维，密钥必须真的不在公司手里，方案才有可信度。</p>
+      </div>
+    </div>
+  </div>
 
 </main>
 
