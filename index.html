@@ -3,1128 +3,665 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>公司治理区块链化转型方案 · 部门视图</title>
+<title>让公司账目晒在阳光下 · 给股东的承诺</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0e1a;
-  --bg-soft: #111827;
-  --bg-card: #161d2e;
-  --bg-card-hover: #1c2540;
-  --line: rgba(148, 163, 184, 0.12);
-  --line-strong: rgba(148, 163, 184, 0.25);
-  --text: #e5e7eb;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --accent: #c8a96a;
-  --accent-soft: rgba(200, 169, 106, 0.12);
-  --red: #e85d57;
-  --red-soft: rgba(232, 93, 87, 0.15);
-  --amber: #d4a437;
-  --amber-soft: rgba(212, 164, 55, 0.15);
-  --green: #4a9b6e;
-  --green-soft: rgba(74, 155, 110, 0.15);
-  --blue: #5b8bc9;
-  --blue-soft: rgba(91, 139, 201, 0.15);
+  --bg: #faf7f2;
+  --bg-soft: #f3ede4;
+  --bg-card: #ffffff;
+  --bg-dark: #1a1d23;
+  --line: rgba(26, 29, 35, 0.1);
+  --line-strong: rgba(26, 29, 35, 0.2);
+  --text: #1a1d23;
+  --text-muted: #5c6066;
+  --text-dim: #8b8f96;
+  --accent: #b8893d;
+  --accent-soft: rgba(184, 137, 61, 0.1);
+  --red: #b8443d;
+  --red-soft: rgba(184, 68, 61, 0.1);
+  --green: #4a7c4e;
+  --green-soft: rgba(74, 124, 78, 0.1);
   --serif: 'Noto Serif SC', serif;
   --sans: 'Noto Sans SC', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.8;
   min-height: 100vh;
   overflow-x: hidden;
+  font-size: 16px;
 }
 
-/* 背景纹理 */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(200, 169, 106, 0.06), transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(91, 139, 201, 0.04), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.4;
+    radial-gradient(ellipse at 30% 0%, rgba(184, 137, 61, 0.04), transparent 60%),
+    radial-gradient(ellipse at 70% 100%, rgba(74, 124, 78, 0.03), transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
   z-index: 1;
 }
 
-/* 顶部导航 */
 header {
-  padding: 24px 0;
+  padding: 28px 0;
   border-bottom: 1px solid var(--line);
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  background: rgba(10, 14, 26, 0.85);
-  backdrop-filter: blur(20px);
   z-index: 100;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+.nav { display: flex; align-items: center; justify-content: space-between; }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--serif); font-size: 17px; font-weight: 500;
 }
 
 .logo-mark {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--accent);
-  display: grid;
-  place-items: center;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 500;
-  position: relative;
-}
-
-.logo-mark::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid var(--accent);
-  opacity: 0.3;
+  width: 38px; height: 38px;
+  background: var(--bg-dark); color: var(--accent);
+  display: grid; place-items: center;
+  font-family: var(--serif); font-size: 18px; font-weight: 500; font-style: italic;
 }
 
 .nav-meta {
-  display: flex;
-  gap: 24px;
-  font-size: 12px;
-  color: var(--text-muted);
-  font-family: var(--mono);
-  letter-spacing: 0.05em;
+  font-family: var(--serif); font-size: 13px;
+  color: var(--text-muted); font-style: italic;
 }
 
-.nav-meta span { display: flex; align-items: center; gap: 6px; }
-
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-/* Hero */
-.hero {
-  padding: 100px 0 80px;
-  position: relative;
-}
+.hero { padding: 100px 0 80px; }
 
 .hero-tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  font-family: var(--serif); font-size: 14px;
+  color: var(--accent); font-style: italic;
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 14px;
 }
 
 .hero-tag::before {
-  content: '';
-  width: 32px;
-  height: 1px;
+  content: ''; width: 40px; height: 1px;
   background: var(--accent);
 }
 
 .hero h1 {
   font-family: var(--serif);
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 24px;
+  font-size: clamp(40px, 6.5vw, 76px);
+  font-weight: 700; line-height: 1.2;
+  letter-spacing: -0.01em; margin-bottom: 32px;
 }
 
 .hero h1 .accent {
-  color: var(--accent);
-  font-style: italic;
-  font-weight: 500;
+  color: var(--accent); font-style: italic; font-weight: 500;
 }
 
 .hero-sub {
-  font-size: 17px;
-  color: var(--text-muted);
-  max-width: 680px;
-  line-height: 1.8;
-  margin-bottom: 48px;
+  font-size: 19px; color: var(--text-muted);
+  max-width: 720px; line-height: 1.85; margin-bottom: 56px;
 }
 
-.hero-meta {
-  display: flex;
-  gap: 48px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-}
-
-.hero-meta-item h3 {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.hero-meta-item p {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--text);
-}
-
-/* 链底座 */
-.chain-base {
-  margin: 80px 0 60px;
-  padding: 28px 32px;
-  background: linear-gradient(135deg, var(--bg-soft), var(--bg-card));
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
+.hero-promise {
+  margin-top: 48px; padding: 36px 40px;
+  background: var(--bg-dark); color: #f3ede4;
   position: relative;
-  overflow: hidden;
 }
 
-.chain-base::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--accent);
-}
-
-.chain-base-grid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: center;
-}
-
-.chain-base-info h2 {
+.hero-promise::before {
+  content: '"'; position: absolute;
+  top: 0; left: 16px;
   font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 6px;
+  font-size: 100px; color: var(--accent);
+  line-height: 1; font-style: italic;
 }
 
-.chain-base-info p {
-  color: var(--text-muted);
-  font-size: 14px;
+.hero-promise p {
+  font-family: var(--serif); font-size: 22px;
+  line-height: 1.7; font-weight: 500; padding-left: 56px;
 }
 
-.chain-base-tags {
-  display: flex;
-  gap: 10px;
+.hero-promise p .accent { color: var(--accent); font-style: italic; }
+
+.hero-promise .signature {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--text-dim);
+  margin-top: 20px; padding-left: 56px; font-weight: 400;
 }
 
-.tag {
-  padding: 6px 14px;
-  border: 1px solid var(--line-strong);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  background: rgba(255,255,255,0.02);
+.section { padding: 100px 0 40px; }
+
+.section-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--accent);
+  margin-bottom: 12px; letter-spacing: 0.05em;
 }
 
-.tag.accent { color: var(--accent); border-color: var(--accent); }
+.section h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 16px; line-height: 1.3;
+}
 
-/* 部门标题 */
-.section-title {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin: 100px 0 40px;
-  padding-bottom: 24px;
+.section h2 .accent {
+  color: var(--accent); font-style: italic; font-weight: 500;
+}
+
+.section-intro {
+  font-size: 17px; color: var(--text-muted);
+  max-width: 700px; line-height: 1.85; margin-bottom: 56px;
+}
+
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin: 48px 0;
+}
+
+.pain-card {
+  padding: 36px 32px; background: var(--bg-card);
+  border: 1px solid var(--line); position: relative;
+}
+
+.pain-card.before { border-top: 3px solid var(--red); }
+.pain-card.after { border-top: 3px solid var(--green); }
+
+.pain-label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 13px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.pain-card.before .pain-label { color: var(--red); }
+.pain-card.after .pain-label { color: var(--green); }
+
+.pain-label::before {
+  content: ''; width: 24px; height: 1px; background: currentColor;
+}
+
+.pain-card h3 {
+  font-family: var(--serif); font-size: 24px;
+  font-weight: 500; margin-bottom: 20px; line-height: 1.4;
+}
+
+.pain-list { list-style: none; }
+
+.pain-list li {
+  padding: 14px 0 14px 28px;
+  border-bottom: 1px dashed var(--line);
+  position: relative; font-size: 15px;
+  line-height: 1.7;
+}
+
+.pain-list li:last-child { border-bottom: none; }
+
+.pain-card.before .pain-list li::before {
+  content: '✗'; position: absolute;
+  left: 0; top: 14px; color: var(--red); font-weight: 500;
+}
+
+.pain-card.after .pain-list li::before {
+  content: '✓'; position: absolute;
+  left: 0; top: 14px; color: var(--green); font-weight: 500;
+}
+
+.metaphor {
+  margin: 80px 0; padding: 60px 64px;
+  background: var(--bg-soft); position: relative;
+  border-radius: 4px;
+}
+
+.metaphor-label {
+  font-family: var(--serif); font-style: italic;
+  color: var(--accent); font-size: 14px; margin-bottom: 16px;
+}
+
+.metaphor h3 {
+  font-family: var(--serif); font-size: 32px;
+  font-weight: 500; line-height: 1.5; margin-bottom: 24px;
+}
+
+.metaphor p {
+  font-size: 17px; line-height: 1.85;
+  color: var(--text-muted); max-width: 800px;
+}
+
+.metaphor p strong { color: var(--text); font-weight: 500; }
+
+.dept-list {
+  margin: 48px 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.dept-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 240px auto;
+  gap: 32px; align-items: center;
+  padding: 32px 0;
   border-bottom: 1px solid var(--line);
-}
-
-.section-title h2 {
-  font-family: var(--serif);
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.section-title h2 .num {
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--accent);
-  margin-right: 16px;
-  font-weight: 500;
-}
-
-.section-title p {
-  color: var(--text-muted);
-  font-size: 14px;
-  font-family: var(--mono);
-  letter-spacing: 0.05em;
-}
-
-/* 部门卡片网格 */
-.dept-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: 80px;
-}
-
-.dept-card {
-  background: var(--bg-card);
-  padding: 32px 28px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  min-height: 240px;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
 }
 
-.dept-card:hover {
-  background: var(--bg-card-hover);
-  transform: translateY(-2px);
+.dept-row:hover {
+  padding-left: 24px;
+  background: linear-gradient(90deg, var(--accent-soft), transparent 70%);
 }
-
-.dept-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dept-card:hover::after { width: 100%; }
 
 .dept-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.2em;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-family: var(--serif); font-style: italic;
+  font-size: 36px; color: var(--accent); font-weight: 500;
 }
 
-.dept-num .risk {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border-radius: 2px;
-  font-size: 10px;
+.dept-info h4 {
+  font-family: var(--serif); font-size: 22px;
+  font-weight: 500; margin-bottom: 6px;
 }
 
-.risk.high {
-  color: var(--red);
-  background: var(--red-soft);
+.dept-info p {
+  font-size: 14px; color: var(--text-muted); line-height: 1.6;
 }
 
-.risk.med {
-  color: var(--amber);
-  background: var(--amber-soft);
+.dept-tag {
+  font-family: var(--serif); font-style: italic;
+  font-size: 13px; color: var(--text-muted);
+  text-align: right; line-height: 1.5;
 }
 
-.risk.low {
-  color: var(--green);
-  background: var(--green-soft);
-}
-
-.risk::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.dept-icon {
-  font-family: var(--serif);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 16px;
-  font-style: italic;
-}
-
-.dept-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.dept-desc {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: auto;
-  line-height: 1.6;
+.dept-tag strong {
+  display: block; color: var(--accent);
+  font-style: normal; font-weight: 500;
+  font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 4px;
 }
 
 .dept-arrow {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  transition: color 0.3s;
+  font-family: var(--serif); font-size: 24px;
+  color: var(--text-dim); transition: all 0.3s; font-style: italic;
 }
 
-.dept-card:hover .dept-arrow { color: var(--accent); }
-
-.dept-arrow svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s;
+.dept-row:hover .dept-arrow {
+  color: var(--accent); transform: translateX(8px);
 }
 
-.dept-card:hover .dept-arrow svg { transform: translateX(4px); }
-
-/* 模态框 */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  z-index: 200;
-  opacity: 0;
-  pointer-events: none;
+  position: fixed; inset: 0;
+  background: rgba(26, 29, 35, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 200; opacity: 0; pointer-events: none;
   transition: opacity 0.3s;
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 .modal {
-  position: fixed;
-  inset: 0;
-  z-index: 201;
-  pointer-events: none;
-  overflow-y: auto;
+  position: fixed; inset: 0; z-index: 201;
+  pointer-events: none; overflow-y: auto;
 }
 
 .modal.active { pointer-events: auto; }
 
 .modal-content {
-  max-width: 960px;
-  margin: 60px auto;
-  background: var(--bg-soft);
-  border: 1px solid var(--line-strong);
-  padding: 56px 64px;
+  max-width: 880px; margin: 60px auto;
+  background: var(--bg); padding: 64px 72px;
   position: relative;
-  transform: translateY(40px);
-  opacity: 0;
+  transform: translateY(40px); opacity: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 4px solid var(--accent);
 }
 
-.modal.active .modal-content {
-  transform: translateY(0);
-  opacity: 1;
-}
+.modal.active .modal-content { transform: translateY(0); opacity: 1; }
 
 .modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
+  position: absolute; top: 24px; right: 24px;
+  width: 44px; height: 44px;
   background: transparent;
   border: 1px solid var(--line-strong);
   color: var(--text-muted);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  font-size: 18px;
-  transition: all 0.3s;
+  cursor: pointer; display: grid; place-items: center;
+  font-size: 20px; transition: all 0.3s;
   font-family: var(--sans);
 }
 
 .modal-close:hover {
-  background: var(--accent);
-  color: var(--bg);
-  border-color: var(--accent);
+  background: var(--bg-dark);
+  color: var(--accent);
+  border-color: var(--bg-dark);
 }
 
 .modal-tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--accent);
   margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 12px;
 }
 
 .modal-tag::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
+  content: ''; width: 24px; height: 1px; background: var(--accent);
 }
 
 .modal h2 {
-  font-family: var(--serif);
-  font-size: 44px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  letter-spacing: -0.01em;
+  font-family: var(--serif); font-size: 44px;
+  font-weight: 700; margin-bottom: 16px;
+  letter-spacing: -0.01em; line-height: 1.2;
 }
 
 .modal-subtitle {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--text-muted);
-  margin-bottom: 40px;
-  font-weight: 400;
+  font-family: var(--serif); font-style: italic;
+  font-size: 19px; color: var(--text-muted);
+  margin-bottom: 40px; font-weight: 400;
+  padding-bottom: 24px; border-bottom: 1px solid var(--line);
 }
 
-.modal-section {
-  margin-bottom: 48px;
-}
-
+.modal-section { margin-bottom: 48px; }
 .modal-section:last-child { margin-bottom: 0; }
 
-.modal-section h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
+.modal-section-label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--accent); margin-bottom: 12px;
 }
 
-.modal-section h3 .num {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 500;
+.modal-section h3 {
+  font-family: var(--serif); font-size: 26px;
+  font-weight: 500; margin-bottom: 20px; line-height: 1.4;
 }
 
 .modal-section p {
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.85;
-  margin-bottom: 16px;
+  font-size: 16px; line-height: 1.85;
+  color: var(--text); margin-bottom: 16px;
 }
 
-.modal-section p:last-child { margin-bottom: 0; }
+.modal-section p strong { color: var(--accent); font-weight: 500; }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 24px 0;
+.concern-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin: 24px 0;
 }
 
-.feature-item {
-  padding: 18px 20px;
-  background: var(--bg-card);
-  border-left: 2px solid var(--accent);
-}
-
-.feature-item h4 {
-  font-family: var(--serif);
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-.feature-item p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.data-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-}
-
-.data-list li {
-  padding: 12px 0 12px 28px;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--text);
-  position: relative;
-  line-height: 1.6;
-}
-
-.data-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 22px;
-  width: 14px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.data-list li strong {
-  color: var(--accent);
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 4px;
-  letter-spacing: 0.05em;
-}
-
-.flow-diagram {
-  margin: 32px 0;
-  padding: 32px;
-  background: var(--bg-card);
+.concern-item {
+  padding: 22px 24px; background: var(--bg-card);
   border: 1px solid var(--line);
-  overflow-x: auto;
-}
-
-.flow-step {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
-  background: var(--bg-soft);
-  border-left: 2px solid var(--accent);
-  margin-bottom: 8px;
-  position: relative;
-}
-
-.flow-step:not(:last-child)::after {
-  content: '↓';
-  position: absolute;
-  left: 28px;
-  bottom: -16px;
-  color: var(--accent);
-  font-size: 14px;
-  z-index: 1;
-}
-
-.flow-step-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  flex-shrink: 0;
-  width: 32px;
-}
-
-.flow-step-content {
-  flex: 1;
-}
-
-.flow-step-content strong {
-  font-family: var(--serif);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.flow-step-content span {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.callout {
-  margin: 24px 0;
-  padding: 20px 24px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(200, 169, 106, 0.3);
   border-left: 3px solid var(--accent);
 }
 
-.callout h4 {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
+.concern-q {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--accent); margin-bottom: 8px;
 }
 
-.callout p {
-  font-size: 14px;
-  color: var(--text);
+.concern-item h5 {
+  font-family: var(--serif); font-size: 17px;
+  font-weight: 500; margin-bottom: 8px; line-height: 1.5;
+}
+
+.concern-item p {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.7; margin: 0;
+}
+
+.story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line); margin: 24px 0;
+}
+
+.story-col { background: var(--bg-card); padding: 28px 28px; }
+.story-col.before { border-top: 3px solid var(--red); }
+.story-col.after { border-top: 3px solid var(--green); }
+
+.story-label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 13px; margin-bottom: 12px;
+}
+
+.story-col.before .story-label { color: var(--red); }
+.story-col.after .story-label { color: var(--green); }
+
+.story-col h5 {
+  font-family: var(--serif); font-size: 18px;
+  font-weight: 500; margin-bottom: 14px; line-height: 1.5;
+}
+
+.story-col p {
+  font-size: 14px; line-height: 1.75;
+  color: var(--text-muted); margin: 0;
+}
+
+.steps { margin: 56px 0; }
+
+.step {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 48px; padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-meta { position: sticky; top: 100px; }
+
+.step-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 64px; color: var(--accent);
+  font-weight: 500; line-height: 1; margin-bottom: 16px;
+}
+
+.step-time {
+  font-family: var(--serif); font-size: 14px;
+  color: var(--text-muted); font-style: italic;
+}
+
+.step-content h4 {
+  font-family: var(--serif); font-size: 28px;
+  font-weight: 500; margin-bottom: 16px; line-height: 1.3;
+}
+
+.step-content > p {
+  font-size: 16px; line-height: 1.85;
+  color: var(--text-muted); margin-bottom: 28px;
+}
+
+.step-actions {
+  list-style: none;
+  border-top: 1px solid var(--line); padding-top: 20px;
+}
+
+.step-actions li {
+  padding: 12px 0 12px 28px;
+  position: relative; font-size: 15px;
   line-height: 1.7;
-  margin: 0;
+  border-bottom: 1px dashed var(--line);
 }
 
-.code-block {
-  margin: 20px 0;
-  padding: 18px 22px;
-  background: #050810;
-  border: 1px solid var(--line);
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.8;
-  overflow-x: auto;
+.step-actions li:last-child { border-bottom: none; }
+
+.step-actions li::before {
+  content: '◆'; position: absolute;
+  left: 0; top: 14px;
+  color: var(--accent); font-size: 8px;
 }
 
-.code-block .keyword { color: var(--accent); }
-.code-block .string { color: var(--green); }
-.code-block .comment { color: var(--text-dim); font-style: italic; }
+.coop-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin: 48px 0;
+}
 
-/* Footer */
+.coop-card {
+  padding: 44px 40px; background: var(--bg-card);
+  border: 1px solid var(--line); position: relative;
+}
+
+.coop-card.us {
+  background: var(--bg-dark); color: #f3ede4; border: none;
+}
+
+.coop-card.us::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 60px; height: 4px; background: var(--accent);
+}
+
+.coop-card.you::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 60px; height: 4px; background: var(--green);
+}
+
+.coop-card-label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; margin-bottom: 12px;
+}
+
+.coop-card.us .coop-card-label { color: var(--accent); }
+.coop-card.you .coop-card-label { color: var(--green); }
+
+.coop-card h3 {
+  font-family: var(--serif); font-size: 32px;
+  font-weight: 500; margin-bottom: 12px; line-height: 1.3;
+}
+
+.coop-card-tagline {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; margin-bottom: 32px;
+  padding-bottom: 24px; border-bottom: 1px solid var(--line);
+}
+
+.coop-card.us .coop-card-tagline {
+  color: rgba(243, 237, 228, 0.6);
+  border-bottom-color: rgba(243, 237, 228, 0.15);
+}
+
+.coop-card.you .coop-card-tagline { color: var(--text-muted); }
+
+.coop-items { list-style: none; }
+
+.coop-items li {
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+  font-size: 15px; line-height: 1.65;
+}
+
+.coop-card.us .coop-items li {
+  border-bottom-color: rgba(243, 237, 228, 0.12);
+}
+
+.coop-items li:last-child { border-bottom: none; }
+
+.coop-items li strong {
+  font-family: var(--serif); font-size: 17px;
+  font-weight: 500; display: block; margin-bottom: 4px;
+}
+
+.coop-card.us .coop-items li strong { color: var(--accent); }
+.coop-card.you .coop-items li strong { color: var(--green); }
+
+.coop-items li span {
+  color: var(--text-muted); font-size: 14px;
+}
+
+.coop-card.us .coop-items li span { color: rgba(243, 237, 228, 0.65); }
+
+.honesty {
+  margin: 80px 0; padding: 56px 64px;
+  background: var(--bg-soft);
+  border-left: 4px solid var(--accent);
+}
+
+.honesty-label {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--accent); margin-bottom: 12px;
+}
+
+.honesty h3 {
+  font-family: var(--serif); font-size: 32px;
+  font-weight: 500; margin-bottom: 32px; line-height: 1.3;
+}
+
+.honesty-list { list-style: none; }
+
+.honesty-list li {
+  padding: 24px 0; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 60px 1fr;
+  gap: 24px; align-items: start;
+}
+
+.honesty-list li:last-child { border-bottom: 1px solid var(--line); }
+
+.honesty-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 24px; color: var(--accent);
+}
+
+.honesty-content h4 {
+  font-family: var(--serif); font-size: 19px;
+  font-weight: 500; margin-bottom: 8px;
+}
+
+.honesty-content p {
+  font-size: 15px; line-height: 1.85; color: var(--text-muted);
+}
+
 footer {
-  margin-top: 120px;
-  padding: 60px 0 40px;
-  border-top: 1px solid var(--line);
-  color: var(--text-dim);
-  font-size: 12px;
-  font-family: var(--mono);
-  letter-spacing: 0.05em;
+  margin-top: 100px; padding: 60px 0 40px;
+  background: var(--bg-dark); color: rgba(243, 237, 228, 0.6);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 40px;
+footer .container {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; flex-wrap: wrap; gap: 32px;
 }
 
-.footer-col h4 {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 16px;
-  letter-spacing: 0.02em;
+.footer-quote {
+  font-family: var(--serif); font-style: italic;
+  font-size: 20px; color: var(--accent);
+  max-width: 600px; line-height: 1.6;
 }
 
-.footer-col p {
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--text-muted);
+.footer-meta {
+  font-family: var(--serif); font-size: 13px;
+  font-style: italic; text-align: right;
 }
 
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-
-/* 响应式 */
 @media (max-width: 900px) {
   .container { padding: 0 20px; }
-  .dept-grid { grid-template-columns: 1fr; }
+  .pain-grid, .concern-grid, .story-grid, .coop-grid { grid-template-columns: 1fr; }
   .modal-content { padding: 40px 28px; margin: 20px; }
   .modal h2 { font-size: 32px; }
-  .feature-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 40px; }
-  .hero-meta { flex-direction: column; gap: 24px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .chain-base-grid { grid-template-columns: 1fr; }
-  .nav-meta { display: none; }
-  .section-title { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .section-title h2 { font-size: 28px; }
+  .hero-promise { padding: 28px 24px; }
+  .hero-promise p { font-size: 17px; padding-left: 32px; }
+  .hero-promise::before { font-size: 60px; left: 8px; }
+  .hero-promise .signature { padding-left: 32px; }
+  .metaphor { padding: 32px 24px; }
+  .metaphor h3 { font-size: 22px; }
+  .step { grid-template-columns: 1fr; gap: 24px; }
+  .step-meta { position: static; }
+  .honesty { padding: 32px 24px; }
+  .dept-row { grid-template-columns: 50px 1fr auto; gap: 16px; padding: 24px 0; }
+  .dept-tag { display: none; }
+  .dept-num { font-size: 28px; }
+  .footer-meta { text-align: left; }
 }
 
-/* 路线图时间线 */
-.timeline {
-  position: relative;
-  margin: 40px 0 80px;
-  padding-left: 32px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 12px;
-  bottom: 12px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--accent) 0%, var(--line-strong) 100%);
-}
-
-.timeline-item {
-  position: relative;
-  padding: 24px 0 32px 32px;
-  border-bottom: 1px solid var(--line);
-}
-
-.timeline-item:last-child { border-bottom: none; }
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -28px;
-  top: 32px;
-  width: 13px;
-  height: 13px;
-  border: 2px solid var(--accent);
-  background: var(--bg);
-  border-radius: 50%;
-}
-
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 38px;
-  width: 30px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.4;
-}
-
-.timeline-phase {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-
-.timeline-phase .phase-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.2em;
-}
-
-.timeline-phase .phase-title {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.timeline-phase .phase-duration {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  padding: 3px 10px;
-  border: 1px solid var(--line-strong);
-}
-
-.timeline-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.85;
-  margin-bottom: 18px;
-  max-width: 760px;
-}
-
-.timeline-deliverables {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  max-width: 760px;
-}
-
-.timeline-deliverable {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text);
-  padding: 6px 0;
-}
-
-.timeline-deliverable::before {
-  content: '◆';
-  color: var(--accent);
-  font-size: 8px;
-  margin-top: 6px;
-  flex-shrink: 0;
-}
-
-/* 双栏对照（合作方提供 vs 公司配合）*/
-.cooperation-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin: 40px 0 80px;
-}
-
-.coop-col {
-  background: var(--bg-card);
-  padding: 40px 36px;
-  position: relative;
-}
-
-.coop-col::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 60px;
-}
-
-.coop-col.provider::before { background: var(--accent); }
-.coop-col.client::before { background: var(--blue); }
-
-.coop-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  color: var(--text-muted);
-}
-
-.coop-col.provider .coop-label { color: var(--accent); }
-.coop-col.client .coop-label { color: var(--blue); }
-
-.coop-title {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-
-.coop-subtitle {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--line);
-}
-
-.coop-category {
-  margin-bottom: 28px;
-}
-
-.coop-category:last-child { margin-bottom: 0; }
-
-.coop-cat-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--serif);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.coop-cat-title .cat-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 500;
-  padding: 2px 8px;
-  background: var(--accent-soft);
-  border-radius: 2px;
-  letter-spacing: 0.05em;
-}
-
-.coop-col.client .coop-cat-title .cat-num {
-  color: var(--blue);
-  background: var(--blue-soft);
-}
-
-.coop-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.coop-list li {
-  padding: 10px 0 10px 22px;
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.7;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-
-.coop-list li:last-child { border-bottom: none; }
-
-.coop-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 18px;
-  width: 10px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.coop-col.client .coop-list li::before { background: var(--blue); }
-
-.coop-list li strong {
-  display: block;
-  font-family: var(--serif);
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 2px;
-  font-size: 14px;
-}
-
-.coop-list li span {
-  color: var(--text-muted);
-  font-size: 12.5px;
-}
-
-/* 关键成功要素 */
-.success-factors {
-  margin: 32px 0 80px;
-  padding: 36px 40px;
-  background: linear-gradient(135deg, rgba(200, 169, 106, 0.06), rgba(91, 139, 201, 0.03));
-  border: 1px solid var(--line-strong);
-  border-left: 3px solid var(--accent);
-}
-
-.success-factors h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.success-factors > p {
-  color: var(--text-muted);
-  font-size: 14px;
-  margin-bottom: 24px;
-  font-style: italic;
-  font-family: var(--serif);
-}
-
-.factor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 24px;
-}
-
-.factor-item {
-  padding: 0;
-}
-
-.factor-item .factor-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 12px;
-}
-
-.factor-item h4 {
-  font-family: var(--serif);
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.factor-item p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-@media (max-width: 900px) {
-  .cooperation-grid { grid-template-columns: 1fr; }
-  .timeline-deliverables { grid-template-columns: 1fr; }
-  .factor-grid { grid-template-columns: 1fr; gap: 20px; }
-  .timeline { padding-left: 20px; }
-  .coop-col { padding: 28px 24px; }
-  .success-factors { padding: 24px 20px; }
-}
-
-/* 滚动条 */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--line-strong); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-soft); }
+::-webkit-scrollbar-thumb { background: var(--text-dim); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-/* 入场动画 */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 </style>
 </head>
@@ -1134,13 +671,10 @@ footer {
   <div class="container">
     <nav class="nav">
       <div class="logo">
-        <div class="logo-mark">链</div>
-        <span>Governance Chain · 治理链</span>
+        <div class="logo-mark">明</div>
+        <span>透明治理 · 让股东放心</span>
       </div>
-      <div class="nav-meta">
-        <span><span class="dot"></span>联盟链 · 在线</span>
-        <span>v 1.0 / 2026</span>
-      </div>
+      <div class="nav-meta">— 致全体股东的一份方案 —</div>
     </nav>
   </div>
 </header>
@@ -1148,291 +682,281 @@ footer {
 <main class="container">
 
   <section class="hero">
-    <div class="hero-tag">Blockchain Governance Transformation</div>
-    <h1>让每一笔账目<br><span class="accent">在阳光下</span>流转</h1>
+    <div class="hero-tag">A Promise to Our Shareholders · 致股东的承诺</div>
+    <h1>把账本<br><span class="accent">摊开</span>给股东看</h1>
     <p class="hero-sub">
-      将公司内部治理系统全面区块链化，包括 ERP、财务、进销存、合同、HR 等核心系统。
-      不发币、不涉及 Tokenomics，仅作为不可篡改的多方共识账本，
-      让股东对内部贪腐防治建立穿透式信任。
+      公司将启动一项治理升级——从财务、采购、合同、印章到董事会决议，所有内部账本都将搬到一个"动不了、删不掉、改不了"的新系统上，并向股东开放查看权限。
     </p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <h3>Architecture</h3>
-        <p>Hyperledger Fabric</p>
+
+    <div class="hero-promise">
+      <p>
+        从此以后，公司的<span class="accent">每一笔账、每一份合同、每一个章</span>，您都可以在系统里查到、验证、追溯。
+        我们没有任何东西可以背着股东改动。
+      </p>
+      <div class="signature">— 这就是我们要给您的承诺。</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-num">第一章 · 为什么要做这件事</div>
+    <h2>过去靠<span class="accent">"我们说"</span>，<br>以后靠<span class="accent">"您看"</span></h2>
+    <p class="section-intro">
+      传统公司治理的最大痛点是：股东只能听管理层"汇报"，看的是已经被整理过、可能被修饰过的报表。一旦发生贪腐或舞弊，往往要等审计师来查、出问题才暴露，而这时候损失已经发生了。
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card before">
+        <div class="pain-label">现状 · 传统模式</div>
+        <h3>您只能等管理层告诉您</h3>
+        <ul class="pain-list">
+          <li>公司账本在内部，您看不到原始数据</li>
+          <li>管理层可以事后修改记录，痕迹很难查</li>
+          <li>关联交易、利益输送被层层包装</li>
+          <li>审计师一年来一两次，查问题滞后</li>
+          <li>出了事是"事后追责"，钱已经没了</li>
+        </ul>
       </div>
-      <div class="hero-meta-item">
-        <h3>Consensus</h3>
-        <p>PBFT 拜占庭容错</p>
-      </div>
-      <div class="hero-meta-item">
-        <h3>Nodes</h3>
-        <p>公司 + 董事会 + 监事会 + 审计 + 股东</p>
-      </div>
-      <div class="hero-meta-item">
-        <h3>Token</h3>
-        <p>无 · None</p>
+      <div class="pain-card after">
+        <div class="pain-label">未来 · 升级后</div>
+        <h3>您随时可以自己查证</h3>
+        <ul class="pain-list">
+          <li>账本对股东开放，原始数据您随时看</li>
+          <li>记录一旦写入就改不了，谁动过都留痕</li>
+          <li>关联关系自动识别，可疑交易自动报警</li>
+          <li>系统 24 小时盯着，发现问题立刻预警</li>
+          <li>从"事后追责"变"事前防住"</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="chain-base">
-    <div class="chain-base-grid">
-      <div class="chain-base-info">
-        <h2>联盟链底座 · 多方共管</h2>
-        <p>所有部门共享同一条联盟链。任何部门数据上链后，自动同步至全部节点，管理层无法单方面修改。</p>
+  <section>
+    <div class="metaphor">
+      <div class="metaphor-label">— 用一个比喻讲清楚原理 —</div>
+      <h3>就像把账本同时存在<br>七家不同机构的保险柜里</h3>
+      <p>
+        想象一下：公司的每一笔账，不只是放在自己电脑里，而是<strong>同步存到 7 个独立保管者那里</strong>——公司自己、董事会、监事会、外部会计师、几位主要股东。任何一笔账的修改，都需要这 7 家中的大多数同时同意，否则就改不了。
+      </p>
+      <p style="margin-top: 16px;">
+        这就是<strong>"区块链"</strong>这个技术词的本质。它不是币、不是炒作，就是一种<strong>"多方共同保管账本"</strong>的方法。我们用它，是因为它是目前已知最可靠的、能让"账本无法被任何一方单独篡改"的工具。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-num">第二章 · 哪些地方会被晒在阳光下</div>
+    <h2>公司里<span class="accent">最容易出问题</span>的<br>9 个地方，全部上"链"</h2>
+    <p class="section-intro">
+      下面这 9 个部门是过去最容易出贪腐和舞弊的地方，也是我们这次治理升级的重点。点击任一个，看看具体会怎么变。
+    </p>
+
+    <div class="dept-list" id="deptList"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-num">第三章 · 这件事怎么落地</div>
+    <h2>一年半的时间，<br>分<span class="accent">四步</span>走稳</h2>
+    <p class="section-intro">
+      我们不会一次性把所有事情都改完——那样风险太大。整个升级分四个阶段，每个阶段都有明确的、股东能验证的成果。哪一步不踏实，下一步就不开始。
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-meta">
+          <div class="step-num">1.</div>
+          <div class="step-time">第 1 - 3 个月<br>打地基</div>
+        </div>
+        <div class="step-content">
+          <h4>先把"多方保管"的规矩立起来</h4>
+          <p>第一阶段不动公司业务，重点是把治理框架搭好。我们会和公司、董事会、监事会、外部会计师、主要股东代表分别签署节点运营协议，明确每一方的权利义务。同时把基础设备装好，让"七家共同保管"的机制真正可以运转。</p>
+          <ul class="step-actions">
+            <li>梳理公司目前最容易出问题的环节，给股东出一份"风险地图"</li>
+            <li>与各方签署节点运营协议，明确法律关系</li>
+            <li>采购加密设备，分发给各方保管者</li>
+            <li>完成总体方案定稿，提交董事会批准</li>
+          </ul>
+        </div>
       </div>
-      <div class="chain-base-tags">
-        <span class="tag accent">无币化</span>
-        <span class="tag">联盟链</span>
-        <span class="tag">PBFT</span>
-        <span class="tag">链下存证</span>
+
+      <div class="step">
+        <div class="step-meta">
+          <div class="step-num">2.</div>
+          <div class="step-time">第 4 - 9 个月<br>先攻最重要的</div>
+        </div>
+        <div class="step-content">
+          <h4>财务、合同、印章先上链</h4>
+          <p>这三个地方是历史上最容易出问题的——也是股东最关心的。我们优先完成这三块，让股东在半年内就能看到实质性变化：账目公开了、合同可查了、用印有迹可循了。这是给股东的第一份"答卷"。</p>
+          <ul class="step-actions">
+            <li>每一笔财务凭证、每一次付款审批都同步上链</li>
+            <li>所有重要合同电子化签署，签完就锁死，无法事后篡改</li>
+            <li>启用智能印章，每次盖章自动留痕、拍照、定位</li>
+            <li>系统开始 24 小时自动监控，发现可疑情况立即报警</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-meta">
+          <div class="step-num">3.</div>
+          <div class="step-time">第 10 - 15 个月<br>全面铺开</div>
+        </div>
+        <div class="step-content">
+          <h4>采购、销售、库存、人事都跟进</h4>
+          <p>第三阶段把覆盖面扩大到公司全部经营环节。供应商怎么选的、价格是不是公允、东西有没有真的发出去、员工的薪酬是不是在合理范围——这些都要让股东能看到答案。这一阶段也是公司员工适应新工作方式的过程，需要管理层有定力。</p>
+          <ul class="step-actions">
+            <li>采购、销售、库存的所有动作开始留痕</li>
+            <li>员工亲属信息纳入系统，自动识别"自家人之间做生意"</li>
+            <li>薪酬数据对监事会和审计师开放，但保护员工个人隐私</li>
+            <li>对全体业务部门进行培训，让大家适应"做事就要留痕"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-meta">
+          <div class="step-num">4.</div>
+          <div class="step-time">第 16 - 18 个月<br>给您钥匙</div>
+        </div>
+        <div class="step-content">
+          <h4>股东查询平台正式上线</h4>
+          <p>最后一步，也是给股东最直观的成果——开发一个专门给股东用的查询平台，您登录后可以直接查公司的关键经营数据。重大支出、关联交易、高管薪酬、董事会决议……所有该让您看的，都能让您看到。从这一刻起，股东不再是被动等汇报的人。</p>
+          <ul class="step-actions">
+            <li>股东专用查询平台上线，主要股东获得登录账号</li>
+            <li>董事会决议、表决记录全部上链，无法事后修改</li>
+            <li>第一份"链上年度治理报告"出炉，由独立审计师认证</li>
+            <li>建立长期运营机制，确保系统持续可用</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="section-title">
-    <h2><span class="num">01 / 03</span>部门视图</h2>
-    <p>点击任一部门 · 查看完整方案</p>
-  </div>
+  <section class="section">
+    <div class="section-num">第四章 · 谁负责什么</div>
+    <h2>我们做<span class="accent">硬活</span>，<br>公司做<span class="accent">表态</span></h2>
+    <p class="section-intro">
+      这件事能不能成，不是单方面就能决定的。作为外部合作方，我们承担技术和方法论上的全部责任；公司这边，主要是要在战略层面下决心、在组织层面给配合。下面是清晰的分工。
+    </p>
 
-  <div class="dept-grid" id="deptGrid"></div>
-
-  <!-- 改造步骤路线图 -->
-  <div class="section-title">
-    <h2><span class="num">02 / 03</span>改造步骤</h2>
-    <p>四阶段实施路线 · 18个月落地</p>
-  </div>
-
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-phase">
-        <span class="phase-num">PHASE I</span>
-        <span class="phase-title">顶层设计与基础设施搭建</span>
-        <span class="phase-duration">第 1 - 3 月</span>
-      </div>
-      <p class="timeline-desc">
-        本阶段聚焦于不动业务的前提下完成所有"地基"工作。需求调研、与各方签署节点运营协议（公司、董事会、监事会、外部审计、主要股东）、采购硬件加密机、搭建联盟链网络。这一阶段的关键不是技术，而是<em>把多方治理的法律框架先立起来</em>。
-      </p>
-      <div class="timeline-deliverables">
-        <div class="timeline-deliverable">完成业务需求调研与风险点梳理</div>
-        <div class="timeline-deliverable">联盟链节点运营协议签署</div>
-        <div class="timeline-deliverable">Hyperledger Fabric 网络部署</div>
-        <div class="timeline-deliverable">HSM 硬件加密机采购与配置</div>
-        <div class="timeline-deliverable">节点运营方密钥多签机制建立</div>
-        <div class="timeline-deliverable">总体技术方案与白皮书定稿</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-phase">
-        <span class="phase-num">PHASE II</span>
-        <span class="phase-title">核心反腐板块上链</span>
-        <span class="phase-duration">第 4 - 9 月</span>
-      </div>
-      <p class="timeline-desc">
-        优先打通财务、合同、行政印章三个高风险板块，这是反腐的"七寸"，也最容易在短期内向股东兑现信任收益。本阶段开始与现有 ERP/财务系统进行 API 对接，部署中间件层，完成核心智能合约开发与测试。
-      </p>
-      <div class="timeline-deliverables">
-        <div class="timeline-deliverable">财务系统：凭证与付款上链</div>
-        <div class="timeline-deliverable">合同管理：电子签署与履约存证</div>
-        <div class="timeline-deliverable">智能印章硬件部署与上链对接</div>
-        <div class="timeline-deliverable">Kafka 中间件与签名网关上线</div>
-        <div class="timeline-deliverable">异常监控、关联交易合约部署</div>
-        <div class="timeline-deliverable">第一次内审节点试运行</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-phase">
-        <span class="phase-num">PHASE III</span>
-        <span class="phase-title">业务系统全面接入</span>
-        <span class="phase-duration">第 10 - 15 月</span>
-      </div>
-      <p class="timeline-desc">
-        将进销存、采购、销售、HR 等业务系统陆续接入。这一阶段难点是组织变革——业务部门需要适应"动作即留痕"的新工作模式，并对历史数据迁移做出取舍。建议同步启动内审培训，让内审人员真正能驾驭链上工具。
-      </p>
-      <div class="timeline-deliverables">
-        <div class="timeline-deliverable">采购、销售、库存系统接入</div>
-        <div class="timeline-deliverable">HR 隐私通道（Channel）上线</div>
-        <div class="timeline-deliverable">IT 主数据治理与权限上链</div>
-        <div class="timeline-deliverable">合规审查、审计取证合约部署</div>
-        <div class="timeline-deliverable">业务部门全员培训</div>
-        <div class="timeline-deliverable">内审风险驾驶舱正式启用</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-phase">
-        <span class="phase-num">PHASE IV</span>
-        <span class="phase-title">股东监督平台与治理闭环</span>
-        <span class="phase-duration">第 16 - 18 月</span>
-      </div>
-      <p class="timeline-desc">
-        最后阶段聚焦于把链上数据真正"亮"给股东。开发股东穿透式监督平台，与外部审计工作流深度整合，建立董事会信息披露的链上闭环。至此，整套治理区块链化转型完成，进入持续运营与合约迭代阶段。
-      </p>
-      <div class="timeline-deliverables">
-        <div class="timeline-deliverable">股东监督平台上线</div>
-        <div class="timeline-deliverable">董事会决议链上化</div>
-        <div class="timeline-deliverable">外部审计工作流集成</div>
-        <div class="timeline-deliverable">第一份"链上年度治理报告"</div>
-        <div class="timeline-deliverable">运营 SLA 与变更管理建立</div>
-        <div class="timeline-deliverable">下一年度合约迭代规划</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 合作方提供 vs 公司配合 -->
-  <div class="section-title">
-    <h2><span class="num">03 / 03</span>合作框架</h2>
-    <p>外部合作方提供 · 公司配合事项</p>
-  </div>
-
-  <div class="cooperation-grid">
-
-    <div class="coop-col provider">
-      <div class="coop-label">External Partner / 我方提供</div>
-      <h3 class="coop-title">外部合作方</h3>
-      <p class="coop-subtitle">技术、方法论、第三方独立性</p>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">A.01</span>技术架构与底层平台</div>
-        <ul class="coop-list">
-          <li><strong>联盟链平台搭建</strong><span>Hyperledger Fabric 网络部署、节点运维、版本升级</span></li>
-          <li><strong>智能合约开发</strong><span>四大类核心合约（异常监控、关联交易、合规审查、审计取证）的编码、测试、部署</span></li>
-          <li><strong>中间件层建设</strong><span>Kafka 消息队列、签名网关、与现有业务系统的 API 适配器</span></li>
-          <li><strong>密钥与安全体系</strong><span>HSM 硬件加密机集成、多签方案设计、密钥分发管理</span></li>
+    <div class="coop-grid">
+      <div class="coop-card us">
+        <div class="coop-card-label">— 我们承担 —</div>
+        <h3>外部合作方</h3>
+        <div class="coop-card-tagline">把所有"专业活儿"包了，让公司零顾虑</div>
+        <ul class="coop-items">
+          <li>
+            <strong>整套系统建设</strong>
+            <span>从设计、开发、部署到调试，技术问题不需要公司操心</span>
+          </li>
+          <li>
+            <strong>反腐规则定制</strong>
+            <span>结合公司行业特点，设定哪些情况要报警、阈值多少</span>
+          </li>
+          <li>
+            <strong>独立第三方节点</strong>
+            <span>提供独立于公司的服务器和保管服务，保证系统真的"中立"</span>
+          </li>
+          <li>
+            <strong>合规备案</strong>
+            <span>办理所有政府备案手续，确保系统合规合法</span>
+          </li>
+          <li>
+            <strong>全员培训</strong>
+            <span>从董事会、管理层到一线员工，所有人的培训我们包了</span>
+          </li>
+          <li>
+            <strong>长期运维</strong>
+            <span>系统上线后 7×24 小时维护，出问题随时响应</span>
+          </li>
+          <li>
+            <strong>年度治理审计配合</strong>
+            <span>每年配合外部会计师做一次完整核查并出具报告</span>
+          </li>
         </ul>
       </div>
 
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">A.02</span>方法论与咨询</div>
-        <ul class="coop-list">
-          <li><strong>治理风险评估</strong><span>梳理公司当前治理薄弱环节、识别上链优先级</span></li>
-          <li><strong>反腐规则库设计</strong><span>结合行业特性定制智能合约阈值与告警规则</span></li>
-          <li><strong>内控制度配套修订</strong><span>协助修改授权审批、用印、采购等管理制度，与链上规则匹配</span></li>
-          <li><strong>组织变革管理</strong><span>业务部门、IT、内审的角色重构建议</span></li>
-        </ul>
-      </div>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">A.03</span>培训与持续运营</div>
-        <ul class="coop-list">
-          <li><strong>分层培训体系</strong><span>董事会层、管理层、内审、IT、业务用户的差异化培训课程</span></li>
-          <li><strong>第三方独立节点托管</strong><span>提供独立于公司IT的节点运营服务，保障链的独立性</span></li>
-          <li><strong>运营 SLA 保障</strong><span>7×24 监控、故障响应、合约升级、版本迭代</span></li>
-          <li><strong>年度治理审计支持</strong><span>配合外部年审会计师对链上数据进行验证</span></li>
-        </ul>
-      </div>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">A.04</span>资质与可信背书</div>
-        <ul class="coop-list">
-          <li><strong>区块链信息服务备案</strong><span>协助完成网信办区块链备案，符合国内合规要求</span></li>
-          <li><strong>等保三级认证</strong><span>系统通过等保三级测评，满足金融级安全标准</span></li>
-          <li><strong>司法存证对接</strong><span>与公证处、互联网法院的存证接口对接</span></li>
-          <li><strong>知识产权保障</strong><span>合约源码托管、应急响应预案、长期维护承诺</span></li>
+      <div class="coop-card you">
+        <div class="coop-card-label">— 公司配合 —</div>
+        <h3>公司这边</h3>
+        <div class="coop-card-tagline">主要是态度问题，不是技术问题</div>
+        <ul class="coop-items">
+          <li>
+            <strong>董事会拍板</strong>
+            <span>项目立项、预算批准、与各方签协议，都需要董事会正式决议</span>
+          </li>
+          <li>
+            <strong>一把手挂帅</strong>
+            <span>这事必须由董事长或总经理亲自管，否则各部门不会真配合</span>
+          </li>
+          <li>
+            <strong>组建专班</strong>
+            <span>从内审、财务、IT、法务抽调骨干组成项目组，全程参与</span>
+          </li>
+          <li>
+            <strong>预算到位</strong>
+            <span>建设期约 300-800 万元，每年维护约 100-200 万元</span>
+          </li>
+          <li>
+            <strong>开放数据接口</strong>
+            <span>把现有的 ERP、财务、合同等系统对接给我们</span>
+          </li>
+          <li>
+            <strong>修订内部制度</strong>
+            <span>把"链上规则"和"公司制度"对齐，避免执行时打架</span>
+          </li>
+          <li>
+            <strong>调整内审汇报关系</strong>
+            <span>内审今后向董事会汇报，不再向总经理汇报，确保独立性</span>
+          </li>
+          <li>
+            <strong>容忍短期阵痛</strong>
+            <span>初期会有员工抱怨"流程麻烦了"，需要管理层顶住压力</span>
+          </li>
         </ul>
       </div>
     </div>
+  </section>
 
-    <div class="coop-col client">
-      <div class="coop-label">Client Side / 贵公司配合</div>
-      <h3 class="coop-title">公司配合事项</h3>
-      <p class="coop-subtitle">领导力、数据、流程、人员</p>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">B.01</span>顶层支持与组织保障</div>
-        <ul class="coop-list">
-          <li><strong>董事会决议授权</strong><span>项目立项、节点运营协议、预算审批等需董事会正式决议</span></li>
-          <li><strong>一把手挂帅</strong><span>由董事长或总经理担任项目第一责任人，推动跨部门协同</span></li>
-          <li><strong>专项工作组成立</strong><span>由内审、财务、IT、法务、董秘办抽调骨干组成专班</span></li>
-          <li><strong>预算与资源到位</strong><span>建设期 300-800 万元 + 年运维 100-200 万元的预算保障</span></li>
-        </ul>
-      </div>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">B.02</span>数据与系统开放</div>
-        <ul class="coop-list">
-          <li><strong>现有系统接口开放</strong><span>ERP、财务、进销存、合同管理系统的 API 调用权限</span></li>
-          <li><strong>数据字典与流程文档</strong><span>提供各业务系统的数据结构、业务流程、审批规则文档</span></li>
-          <li><strong>员工亲属关系申报</strong><span>建立员工亲属库，作为关联交易识别的基础数据</span></li>
-          <li><strong>历史数据迁移决策</strong><span>就历史数据是否回溯上链做出决策（建议从某一基准日起）</span></li>
-        </ul>
-      </div>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">B.03</span>制度与流程改造</div>
-        <ul class="coop-list">
-          <li><strong>授权管理制度修订</strong><span>明确各级审批权限，并将其编码为智能合约规则</span></li>
-          <li><strong>用印管理升级</strong><span>采购智能印章硬件，废止纸质用印登记本</span></li>
-          <li><strong>合同电子化转型</strong><span>选定电子签约平台、推动重要合同全部电子签署</span></li>
-          <li><strong>异常告警处置流程</strong><span>建立链上告警的分级处置机制（关闭/升级/移交）</span></li>
-        </ul>
-      </div>
-
-      <div class="coop-category">
-        <div class="coop-cat-title"><span class="cat-num">B.04</span>人员与文化配合</div>
-        <ul class="coop-list">
-          <li><strong>关键岗位参与培训</strong><span>财务、采购、合同、印章管理等关键岗位人员强制培训</span></li>
-          <li><strong>业务部门接受新流程</strong><span>从"自由操作"转变为"合规留痕"的工作模式</span></li>
-          <li><strong>内审独立性保障</strong><span>内审部门向董事会而非 CEO 直接汇报，调整组织汇报关系</span></li>
-          <li><strong>容忍短期摩擦</strong><span>初期可能出现流程变慢、告警过多等阵痛，需要管理层定力支持</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 关键成功要素 -->
-  <div class="success-factors">
-    <h3>项目能否成功的三个关键</h3>
-    <p>technology is easy, the hard part is governance itself</p>
-    <div class="factor-grid">
-      <div class="factor-item">
-        <div class="factor-num">01</div>
-        <h4>一把手定力</h4>
-        <p>区块链化必然让一些人不舒服。如果一把手在第一次"链上告警涉及到熟人"时退缩，整个项目就废了。需要顶层有"我自己也接受被监督"的觉悟。</p>
-      </div>
-      <div class="factor-item">
-        <div class="factor-num">02</div>
-        <h4>数据源头质量</h4>
-        <p>区块链只能保证"上链后不被改"，无法保证"上链时为真"。源头数据采集必须配合摄像头、电子签名、多人复核等物理与制度手段，否则就是"垃圾不可篡改地永远存着"。</p>
-      </div>
-      <div class="factor-item">
-        <div class="factor-num">03</div>
-        <h4>外部节点真独立</h4>
-        <p>如果监事会节点、审计节点、股东节点都还是公司IT在维护，就是"自己监督自己"。这些节点必须由独立第三方运维，密钥必须真的不在公司手里，方案才有可信度。</p>
-      </div>
-    </div>
+  <div class="honesty">
+    <div class="honesty-label">— 我们想跟股东说三句真心话 —</div>
+    <h3>这些事，我们必须<br>提前讲清楚</h3>
+    <ul class="honesty-list">
+      <li>
+        <div class="honesty-num">一</div>
+        <div class="honesty-content">
+          <h4>这套系统不是"反腐神器"</h4>
+          <p>它能解决"事后造假"和"信息不对称"的问题，但解决不了"源头造假"。比如有人收了回扣、然后把虚假合同盖了章上链——系统能记住这份合同永远改不了，但判断不出"这份合同本身是不是公允的"。所以它必须配合健全的内控制度才能发挥最大作用。</p>
+        </div>
+      </li>
+      <li>
+        <div class="honesty-num">二</div>
+        <div class="honesty-content">
+          <h4>它会让一些人不舒服</h4>
+          <p>当公司里的每个动作都被记录、可被股东查验时，那些过去靠"信息黑箱"获利的人会很不舒服。项目能否成功，关键看一把手在第一次"系统报警涉及到熟人"时能不能顶住。如果那时候退缩了，整个项目就废了。我们事先把这话说在前头。</p>
+        </div>
+      </li>
+      <li>
+        <div class="honesty-num">三</div>
+        <div class="honesty-content">
+          <h4>这是一笔"管理学投资"，不是技术开销</h4>
+          <p>建设期 300-800 万元、年维护 100-200 万元，相对于一次重大舞弊事件可能造成的千万、上亿损失，这是一笔很划算的投资。但更重要的是，它在向资本市场和合作伙伴释放一个信号：<strong>这家公司是认真做透明治理的</strong>。这个无形价值，远超过技术成本本身。</p>
+        </div>
+      </li>
+    </ul>
   </div>
 
 </main>
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>方案核心理念</h4>
-        <p>区块链不是反腐银弹，但它把舞弊行为从"低风险高收益"转变为"高风险低收益"，配合健全内控制度形成完整治理体系。</p>
-      </div>
-      <div class="footer-col">
-        <h4>技术栈</h4>
-        <p>Hyperledger Fabric · PBFT 共识 · Kafka 消息队列 · IPFS / 私有对象存储 · HSM 硬件加密</p>
-      </div>
-      <div class="footer-col">
-        <h4>实施周期</h4>
-        <p>第一期 1-3 月 · 顶层设计与节点搭建<br>第二期 4-9 月 · 财务/合同/印章上链<br>第三期 10-15 月 · 进销存与 HR<br>第四期 16-18 月 · 股东监督平台</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 · Internal Governance Blockchain Initiative</span>
-      <span>Confidential · For Board Review</span>
+    <div class="footer-quote">"<br>我们的每一笔账、每一份合同、<br>每一个章，您都可以在系统里查到。"</div>
+    <div class="footer-meta">
+      公司治理透明化方案<br>
+      仅供股东内部参阅 · 2026
     </div>
   </div>
 </footer>
 
-<!-- 模态框 -->
 <div class="modal-overlay" id="modalOverlay"></div>
 <div class="modal" id="modal">
   <div class="modal-content" id="modalContent"></div>
@@ -1441,312 +965,187 @@ footer {
 <script>
 const departments = [
   {
-    id: 'finance',
-    num: '01',
-    icon: '财',
-    name: '财务部',
-    desc: '凭证、报销、付款审批、银行流水的全流程上链',
-    risk: 'high',
-    riskLabel: '核心反腐',
-    subtitle: '反贪腐的核心战场',
-    intro: '财务系统是历史上舞弊最高发的领域，涉及凭证伪造、虚假报销、付款挪用、阴阳账等多种舞弊形式。区块链化的核心目标，是让每一笔财务记录从产生那一刻起就被多方见证，且永久不可篡改。',
-    effects: [
-      { title: '凭证不可篡改', desc: '会计凭证哈希实时上链，事后无法回溯修改，杜绝"做两套账"的可能性' },
-      { title: '审批链穿透留痕', desc: '从报销人到最终审批人的完整链条不可隐藏，每一级审批意见永久存证' },
-      { title: '银行流水交叉验证', desc: '银行流水与凭证自动勾稽，金额或时间不一致即触发告警' },
-      { title: '财报快照存证', desc: '月度/季度/年度报表生成时即上链，杜绝事后调整数字' }
+    id: 'finance', num: '一', name: '财务部',
+    desc: '凭证、报销、付款、银行流水',
+    tag: '反贪腐核心',
+    subtitle: '从"可以做账"变成"做不了假账"',
+    intro: '财务是历史上贪腐最高发的环节——做两套账、虚假报销、把公款转给关联方……这些都是大家熟知的套路。升级之后，财务的每一笔操作都会同步给七家保管者，事后想"调一调数字"就调不动了。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '"两套账"和"事后修改"', desc: '过去公司可能给股东看一套账，自己内部一套账，且账目可以事后调整。' },
+      { q: '现在怎么解决？', title: '账本一记就锁死', desc: '每笔凭证一录入就同步给七家保管者，谁都不能单独修改，假账做不出来。' },
+      { q: '我能看到什么？', title: '所有大额支出明细', desc: '超过净资产1%的每一笔支出，您登录平台都能看到完整审批链。' },
+      { q: '系统会主动报警吗？', title: '可疑交易自动预警', desc: '深夜大额转账、价格异常、向新供应商首次大额付款，系统都会主动告警。' }
     ],
-    dataItems: [
-      { tag: '凭证数据', text: '会计凭证号、日期、借贷科目、金额、摘要、制单/审核/记账人' },
-      { tag: '报销流程', text: '报销申请、审批节点、审批意见、最终支付指令' },
-      { tag: '付款审批', text: '对外付款的多级审批链，付款金额、收款方、付款理由' },
-      { tag: '银行流水', text: '所有银行账户的进出明细哈希存证（敏感字段加密）' },
-      { tag: '财务报表', text: '月度/季度/年度财务报表的完整快照与哈希' }
-    ],
-    contracts: [
-      '审批权限合约：单笔超总经理权限自动升级董事会',
-      '拆单识别合约：检测同供应商30天内累计金额',
-      '夜间交易合约：22:00-6:00大额付款自动告警',
-      '价格偏离合约：采购单价偏离市场15%自动标记'
-    ],
-    integration: '不替换现有财务系统，通过API钩子在"凭证审核通过"、"付款指令发出"等关键节点触发上链。原系统数据为"工作副本"，链上数据为"权威副本"，任何不一致在审计时立即暴露。'
+    stories: {
+      before: { title: '过去：CFO 周末改了一笔账', desc: '某公司CFO在周日把一笔200万的费用从"管理费用"调到"研发费用"，避免被审计盯上。这种操作过去几乎无痕。' },
+      after: { title: '现在：调账动作本身被记录', desc: '同样的操作，现在会被系统永久记录"周日23点张某发起调账请求"，董事会和股东第二天就能看到。' }
+    },
+    promise: '我们承诺：从启用这套系统之日起，公司任何一笔超过 50 万元的对外付款，都会在审批完成的 10 分钟内同步到您可查询的平台上。'
   },
   {
-    id: 'procurement',
-    num: '02',
-    icon: '采',
-    name: '采购部',
-    desc: '供应商准入、采购订单、价格审批、付款结算',
-    risk: 'high',
-    riskLabel: '核心反腐',
-    subtitle: '供应链反腐的关键节点',
-    intro: '采购环节是回扣、虚开、关联交易的高发地。区块链化的目标是让每一个供应商的引入、每一笔采购的发起、每一次价格的审批，都在多方见证下进行，从源头切断利益输送的暗箱操作空间。',
-    effects: [
-      { title: '供应商穿透识别', desc: '工商信息、股东、地址、银行账号自动比对员工亲属库，关联关系无所遁形' },
-      { title: '采购全流程留痕', desc: '需求提报、招投标、定标、合同、订单、入库、付款的每一步上链' },
-      { title: '比价机制透明化', desc: '历史采购价与市场参考价对比，超阈值偏离自动触发告警' },
-      { title: '供应商集中度监控', desc: '前十大供应商占比、新供应商首单金额等关键指标实时披露' }
+    id: 'procurement', num: '二', name: '采购部',
+    desc: '供应商、采购单、价格审批',
+    tag: '反贪腐核心',
+    subtitle: '让"吃回扣"变成高风险动作',
+    intro: '采购是回扣、利益输送的高发地——把订单给"自己人"开的公司、报价虚高、用空壳供应商套钱。升级之后，每一个供应商的来历、每一笔订单的价格、采购员和供应商之间有没有亲戚关系，都会被系统主动核查。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '采购员和供应商"勾兑"', desc: '采购经理把订单给亲戚开的公司，价格定得偏高，差价两人分账。' },
+      { q: '现在怎么解决？', title: '亲属关系自动比对', desc: '系统会把员工申报的亲属信息和供应商股东信息自动比对，是亲戚就立刻标红。' },
+      { q: '我能看到什么？', title: '前十大供应商画像', desc: '您能看到公司前十大供应商是谁、占采购总额多少、有没有关联交易嫌疑。' },
+      { q: '系统会主动报警吗？', title: '价格偏离自动告警', desc: '采购单价比市场参考价高15%以上、或新供应商首单超过50万，系统都会自动报警。' }
     ],
-    dataItems: [
-      { tag: '供应商主数据', text: '准入审批、工商信息、股东穿透、银行账号、变更历史' },
-      { tag: '采购订单', text: '供应商、品类、数量、单价、总价、需求部门、审批人' },
-      { tag: '招投标记录', text: '投标方名单、报价、评标过程、定标依据' },
-      { tag: '合同信息', text: '合同编号、金额、付款方式、关键条款哈希' },
-      { tag: '收货验收', text: '入库数量、验收人、质量检验结果' }
-    ],
-    contracts: [
-      '关联交易识别：供应商与员工亲属、高管关联自动标记',
-      '首次合作大额：新供应商首单超阈值强制升级审批',
-      '价格异常监控：单价偏离历史均价/市场价超15%告警',
-      '招标流程合规：单笔采购金额触发招标程序自动校验'
-    ],
-    integration: '与现有采购管理系统（如SAP Ariba、用友采购云）通过中间件对接，关键节点事件推送至链上。供应商主数据变更需多签确认，无法通过单一管理员"偷偷"修改供应商银行账号。'
+    stories: {
+      before: { title: '过去：采购总监找小舅子开公司', desc: '某公司采购总监让小舅子注册一家供应商公司，三年下来通过虚高报价转走了2000多万。事后才被举报发现。' },
+      after: { title: '现在：第一单就会被标红', desc: '小舅子的公司一录入系统，就会因"股东信息与采购员亲属库匹配"自动标红，强制董事会审批。' }
+    },
+    promise: '我们承诺：所有新供应商的引入、所有大额采购订单的审批，都会同步给监事会和外部审计师，您随时可以追溯任何一笔采购的真实来龙去脉。'
   },
   {
-    id: 'sales',
-    num: '03',
-    icon: '销',
-    name: '销售与库存',
-    desc: '销售订单、客户授信、出入库、价格折扣',
-    risk: 'med',
-    riskLabel: '中风险',
-    subtitle: '收入真实性的链上保障',
-    intro: '销售与库存的舞弊形式包括：阴阳合同、虚假发货、库存窃取、销售员私吞折扣等。区块链化重点保障收入的真实性、库存的物理与账面一致性，以及销售折扣的合规授予。',
-    effects: [
-      { title: '订单全程留痕', desc: '销售订单从录入、审批、发货到回款的全链路上链，杜绝事后修改单价或数量' },
-      { title: '库存物理对账', desc: '出入库记录与库存余额实时勾稽，盘点结果上链不可篡改' },
-      { title: '折扣审批透明', desc: '所有超标折扣的审批链上链，无法事后伪造审批文件' },
-      { title: '客户信用穿透', desc: '客户授信额度、回款记录、关联关系全部链上可查' }
+    id: 'sales', num: '三', name: '销售与库存',
+    desc: '销售订单、客户、出入库',
+    tag: '收入真实性',
+    subtitle: '收入是真的，库存对得上',
+    intro: '销售环节常见的问题是：销售员私下给客户更大折扣换回扣、虚假发货虚增收入、库存账实不符（东西被偷或者从来就没有）。升级之后，每一份销售合同、每一笔出入库都同步上链。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '虚假销售撑业绩', desc: '管理层为了完成业绩，做虚假销售订单、年底再退货，让财报好看。' },
+      { q: '现在怎么解决？', title: '订单到回款全程留痕', desc: '从订单签订、发货、回款的每一步都要上链，事后退货也会留下完整痕迹，无法粉饰。' },
+      { q: '我能看到什么？', title: '收入构成与回款情况', desc: '您能看到收入按客户、按产品的分布，应收账款的账龄分析，识别是否有"虚胖"。' },
+      { q: '系统会主动报警吗？', title: '异常折扣与退货告警', desc: '超出销售员权限的折扣、销售后短期内大额退货，系统都会自动标记。' }
     ],
-    dataItems: [
-      { tag: '销售订单', text: '客户、产品、数量、单价、折扣、销售员、审批人' },
-      { tag: '客户主数据', text: '客户准入、授信额度、变更历史、关联关系' },
-      { tag: '出入库记录', text: '物料、数量、批次、经办人、对应单据' },
-      { tag: '库存盘点', text: '盘点周期、结果、差异、责任人确认' },
-      { tag: '折扣授权', text: '折扣率、原因、审批人、对应订单' }
-    ],
-    contracts: [
-      '折扣超限合约：销售折扣超过员工权限自动升级',
-      '客户授信合约：单一客户应收余额超授信自动告警',
-      '库存异动合约：非业务时间出入库行为标记',
-      '销售集中度合约：前N大客户依赖度变化趋势监控'
-    ],
-    integration: '与CRM、WMS仓储系统通过事件总线集成。销售订单一旦确认即上链锁定，事后修改需要走"链上变更流程"，所有变更轨迹永久保留。库存盘点结果由多人现场扫码上链，无法被单方面调整。'
+    stories: {
+      before: { title: '过去：年底突击销售冲业绩', desc: '某公司年底向经销商压货1.2亿元让财报达标，第二年第一季度被退回8000万。投资人发现时已经被骗了一年。' },
+      after: { title: '现在：压货退货模式立刻暴露', desc: '系统会自动统计"年底集中销售+次年集中退货"模式，监事会和股东节点会立即看到这种异常。' }
+    },
+    promise: '我们承诺：每月给您出一份"销售真实性快报"，重点披露非常规销售、大额折扣、关联客户交易，让您看到的财报是真财报。'
   },
   {
-    id: 'contract',
-    num: '04',
-    icon: '合',
-    name: '合同与法务',
-    desc: '合同签署、履约监控、变更与终止',
-    risk: 'high',
-    riskLabel: '核心反腐',
-    subtitle: '法律契约的不可篡改存证',
-    intro: '合同是公司对外承担义务、行使权利的核心载体。合同舞弊包括：私自签署、超权签约、阴阳合同、事后篡改条款等。区块链化让每一份合同从起草到终止的全生命周期都成为多方见证的法律事实。',
-    effects: [
-      { title: '合同哈希永久存证', desc: '合同正文哈希上链，原文存私有存储。任何篡改导致哈希不一致，立即暴露' },
-      { title: '签署流程电子化', desc: '电子签名、签署时间、签署IP全部上链，具备司法认可的证据效力' },
-      { title: '履约自动比对', desc: '合同条款（金额、期限、付款节点）与实际履约自动核对，偏差告警' },
-      { title: '关联合同识别', desc: '与同一对手方的多份合同自动关联分析，识别拆分合同规避审批' }
+    id: 'contract', num: '四', name: '合同与法务',
+    desc: '合同签署、履约、变更',
+    tag: '反贪腐核心',
+    subtitle: '签了的合同，谁也改不了',
+    intro: '合同是公司对外承担义务和权利的"承诺书"。常见的舞弊手段包括：偷偷修改合同条款、私下签了越权合同、签完后又偷偷改金额。升级之后，合同一签署就被永久"封存"。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '管理层私下签大单', desc: '总经理超出权限签了一份5000万的对外担保，事后董事会才知道。' },
+      { q: '现在怎么解决？', title: '权限自动拦截', desc: '签字人权限被预先编进系统，超权限的合同根本签不出来，就算签了也无法生效。' },
+      { q: '我能看到什么？', title: '所有重要合同概要', desc: '所有超过权限阈值的合同，您都能看到金额、对手方、关键条款摘要。' },
+      { q: '系统会主动报警吗？', title: '拆单规避告警', desc: '把一份大合同拆成几份小合同来规避审批的伎俩，系统会自动识别并告警。' }
     ],
-    dataItems: [
-      { tag: '合同信息', text: '合同编号、对手方、金额、期限、关键条款' },
-      { tag: '签署记录', text: '会签流程、签署人、签署时间、电子签名哈希' },
-      { tag: '合同正文', text: '合同PDF的SHA-256哈希（原文存IPFS或私有存储）' },
-      { tag: '履约记录', text: '发票开具、付款实际情况、收货验收记录' },
-      { tag: '变更与终止', text: '合同变更、补充协议、提前终止的全部记录' }
-    ],
-    contracts: [
-      '权限校验合约：合同金额超签字人权限自动拦截',
-      '关联合同合约：同对手方拆单签约识别',
-      '履约偏差合约：付款金额与合同条款不一致告警',
-      '到期提醒合约：合同到期/续签自动通知相关方'
-    ],
-    integration: '集成电子合同平台（如法大大、e签宝）的SDK，签署完成后自动上链。合同正文文件存储于IPFS或公司私有对象存储，链上仅存哈希指针，既保证不可篡改又控制存储成本。'
+    stories: {
+      before: { title: '过去：合同被偷偷改条款', desc: '某公司一份采购合同签订后，财务发现对方收款账号与原合同不一致，但原合同已经"找不到了"。' },
+      after: { title: '现在：每个版本都留痕', desc: '合同从初稿到终稿的每一次修改都会被记录，谁改的、改了什么、什么时候改的，永远查得到。' }
+    },
+    promise: '我们承诺：所有重要合同（金额超过净资产0.5%）的签署即时同步给监事会，任何后续修改都会触发告警，您不会再被"瞒签"。'
   },
   {
-    id: 'hr',
-    num: '05',
-    icon: '人',
-    name: '人力资源',
-    desc: '薪酬体系、考勤、入离职、岗位调整',
-    risk: 'med',
-    riskLabel: '隐私通道',
-    subtitle: '隐私与透明的平衡设计',
-    intro: 'HR数据涉及员工隐私，但薪酬总额、高管薪酬、重大人事调整对股东而言是关键监督对象。本板块采用"隐私通道+主通道"的分层设计：隐私数据走私有通道，治理相关数据强制上主链。',
-    effects: [
-      { title: '薪酬总额透明', desc: '薪酬总额、高管薪酬汇总强制上主通道，股东可监督但具体个人数据保密' },
-      { title: '高管任免留痕', desc: '高级管理人员的聘任、解聘、调岗全部上链，杜绝"暗箱调任"' },
-      { title: '考勤防伪', desc: '关键岗位考勤数据上链，防止虚报出勤、虚构加班费' },
-      { title: '员工亲属库链上', desc: '员工申报的亲属关系上链，作为关联交易识别的数据基础' }
+    id: 'hr', num: '五', name: '人力资源',
+    desc: '薪酬、考勤、人事变动',
+    tag: '隐私平衡',
+    subtitle: '高管钱包透明，员工隐私保护',
+    intro: 'HR数据涉及员工隐私，我们的设计是分层处理：员工个人薪酬严格保密，但薪酬总额、高管薪酬、关键人事变动这些股东应该知道的，必须公开。这是隐私和透明的平衡。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '高管自己给自己加薪', desc: '管理层在股东不知情的情况下，给自己和亲信发高额奖金。' },
+      { q: '现在怎么解决？', title: '高管薪酬强制披露', desc: '所有高级管理人员的薪酬包变更，必须同步给监事会和薪酬委员会。' },
+      { q: '我能看到什么？', title: '薪酬总额与高管明细', desc: '您能看到公司薪酬总额、人均薪酬、高管薪酬汇总，但看不到普通员工个人薪酬（保护隐私）。' },
+      { q: '系统会主动报警吗？', title: '异常调薪告警', desc: '单次调薪超过基本工资的50%、或者短期内多次调薪，系统会自动标记。' }
     ],
-    dataItems: [
-      { tag: '薪酬数据', text: '薪酬总额（主链）、个人薪酬（隐私通道）、调薪历史' },
-      { tag: '组织变动', text: '部门设立/撤销、岗位调整、汇报关系变更' },
-      { tag: '高管事项', text: '高管聘任、解聘、薪酬包、奖金、股权激励' },
-      { tag: '入离职', text: '入职审批、离职原因、竞业协议、交接记录' },
-      { tag: '亲属申报', text: '员工申报的亲属关系（用于关联交易识别）' }
-    ],
-    contracts: [
-      '薪酬异常合约：单次调薪幅度超阈值自动告警',
-      '高管薪酬合约：高管薪酬变更自动同步董事会',
-      '考勤异常合约：考勤数据与门禁、视频对账',
-      '虚假员工合约：长期未到岗员工识别（防止吃空饷）'
-    ],
-    integration: '通过Hyperledger Fabric的Channel机制实现数据隔离。薪酬通道仅薪酬委员会、监事会、外审节点可见，主链仅看到汇总数据。这样设计既保护了员工隐私，又保障了股东必要的监督权。'
+    stories: {
+      before: { title: '过去：高管发"年终特别奖"', desc: '某公司CEO在年报中只披露固定薪酬380万，但实际通过"特别项目奖金"另拿了800万，股东不知情。' },
+      after: { title: '现在：所有奖金必须报备', desc: '高管的任何形式的现金回报（工资、奖金、补贴、股权）都必须上链，无法隐瞒。' }
+    },
+    promise: '我们承诺：每季度向股东推送高管薪酬包变化情况，让您对管理层的总报酬一清二楚。普通员工隐私得到完整保护。'
   },
   {
-    id: 'admin',
-    num: '06',
-    icon: '行',
-    name: '行政与印章',
-    desc: '公章管理、证照、固定资产、用印审批',
-    risk: 'high',
-    riskLabel: '核心反腐',
-    subtitle: '一枚公章背后的法律风险',
-    intro: '印章是公司对外承担法律责任的"实物钥匙"，传统的纸质用印登记本极易被篡改或销毁，是治理中最容易出问题的环节之一。区块链化的目标是让每一次用印都成为不可销毁的链上事件。',
-    effects: [
-      { title: '用印申请上链', desc: '每次用印的申请理由、用印文件哈希、审批人全部上链' },
-      { title: '物理用印留痕', desc: '配合智能印章设备，盖章时自动拍照、定位、上链，与申请记录强制比对' },
-      { title: '证照变更可追溯', desc: '营业执照、资质证书、税务登记的每一次变更上链' },
-      { title: '固定资产追踪', desc: '大额固定资产从采购、登记、调拨、报废的全生命周期上链' }
+    id: 'admin', num: '六', name: '行政与印章',
+    desc: '公章、证照、固定资产',
+    tag: '反贪腐核心',
+    subtitle: '一枚章背后是巨大的法律风险',
+    intro: '公章是公司对外承担法律责任的"实物钥匙"。一个章可以盖出一份5000万的担保函。过去用印登记本是纸质的，可以撕掉、可以重写。升级之后，每一次盖章都会被自动拍照、定位、上链。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '公章被盗用或私盖', desc: '保管员被收买、或者高管授意私盖一份对外担保，公司莫名其妙背上巨额债务。' },
+      { q: '现在怎么解决？', title: '智能印章+申请上链', desc: '使用智能印章硬件，每次盖章自动拍照、记录定位、与申请单匹配，私盖根本盖不出来。' },
+      { q: '我能看到什么？', title: '所有用印事项概要', desc: '股东可以查看用印的频率、类型、申请人，重大用印事项实时推送给监事会。' },
+      { q: '系统会主动报警吗？', title: '异常用印告警', desc: '非工作时间用印、申请用途与实际盖章文件不符、连续高频用印，都会自动告警。' }
     ],
-    dataItems: [
-      { tag: '用印记录', text: '申请人、用印事由、文件哈希、审批链、实际盖章时间' },
-      { tag: '印章保管', text: '印章保管人、交接记录、异常事件' },
-      { tag: '证照信息', text: '各类证照的颁发、变更、续期、注销' },
-      { tag: '固定资产', text: '资产编号、采购、入账、调拨、盘点、报废' },
-      { tag: '车辆/办公', text: '公车使用、办公用品大额采购等' }
-    ],
-    contracts: [
-      '用印异常合约：非工作时间用印、连续高频用印告警',
-      '权限超限合约：用印文件类型超出申请人权限拦截',
-      '印章物理监控：智能印章硬件与链上申请实时对账',
-      '资产异动合约：大额资产调拨、报废自动触发审批'
-    ],
-    integration: '配套部署智能印章硬件（如启信智能印章），物理用印动作自动触发链上记录，与事前的用印申请进行强匹配。任何"先盖章后补审批"或"申请用于A实际用于B"的违规行为，都会立即在链上暴露。'
+    stories: {
+      before: { title: '过去：用印登记本"丢了"', desc: '某公司发生违规对外担保后，纸质用印登记本"在搬家时丢了"，无法追溯当时是谁盖的章。' },
+      after: { title: '现在：盖章动作物理留痕', desc: '智能印章设备拍下每次盖章的文件首页、记录GPS位置、关联申请单，无法销毁、无法抵赖。' }
+    },
+    promise: '我们承诺：所有重大用印事项（如对外担保、重大合同）实时同步给监事会，您不会再有"莫名其妙背锅"的风险。'
   },
   {
-    id: 'it',
-    num: '07',
-    icon: 'IT',
-    name: 'IT与数据',
-    desc: '系统权限、主数据、操作日志、安全事件',
-    risk: 'med',
-    riskLabel: '基础设施',
-    subtitle: '链上系统的元治理',
-    intro: 'IT部门是所有上链数据的"源头守门人"，也是最有能力进行系统性篡改的高风险岗位。本板块的核心，是让IT管理员的所有特权操作本身也上链留痕，形成"看守者也被看守"的闭环。',
-    effects: [
-      { title: '权限变更留痕', desc: '所有系统的用户授权、角色变更、特权账号操作上链' },
-      { title: '主数据锁定', desc: '供应商、客户、银行账号等核心主数据修改需多签上链' },
-      { title: '系统日志哈希', desc: '关键业务系统的操作日志定期生成哈希上链，防止日志删除' },
-      { title: '安全事件存证', desc: '入侵告警、异常登录、数据导出等安全事件不可销毁' }
+    id: 'it', num: '七', name: 'IT与数据',
+    desc: '系统权限、数据安全',
+    tag: '基础设施',
+    subtitle: '让"管系统的人"也被监督',
+    intro: 'IT管理员是离公司数据最近的人，理论上他们可以"偷偷改数据"。这一板块的核心，是让IT管理员的所有特权操作本身也被记录下来——形成"看守人也被看守"的闭环。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: 'IT管理员动了数据', desc: '理论上IT工程师可以直接进数据库改数字，所有审计都查不出来。' },
+      { q: '现在怎么解决？', title: 'IT特权操作必留痕', desc: 'IT管理员的所有敏感操作都会被自动捕获并上链，谁动了什么、什么时候动的，永久记录。' },
+      { q: '我能看到什么？', title: '关键主数据变更', desc: '供应商银行账号、客户授信额度等关键信息的修改记录，您都能看到。' },
+      { q: '系统会主动报警吗？', title: '异常操作告警', desc: '非常规的批量数据导出、关键账户的权限变更，都会触发告警。' }
     ],
-    dataItems: [
-      { tag: '权限管理', text: '用户创建、角色授权、权限变更、账号停用' },
-      { tag: '主数据治理', text: '核心主数据的新增、修改、删除（需多签）' },
-      { tag: '系统日志', text: '关键业务系统操作日志的定期哈希存证' },
-      { tag: '数据库变更', text: 'DBA特权操作（DDL、敏感表DML）上链' },
-      { tag: '安全事件', text: '安全设备告警、异常登录、大批量数据导出' }
-    ],
-    contracts: [
-      '特权操作合约：DBA、超管账号操作强制双人复核',
-      '主数据合约：银行账号、供应商主数据修改需3方签名',
-      '日志完整性合约：关键日志缺失自动告警',
-      '数据导出合约：大批量数据导出需审批+留痕'
-    ],
-    integration: '在数据库代理层部署审计插件，对DDL和敏感表的DML操作自动捕获并上链。SSO身份认证系统与链上账号绑定，所有用户的权限变更必须经过链上工作流，任何"绕过流程直接改库"的行为都会立即暴露。'
+    stories: {
+      before: { title: '过去：供应商账号被改', desc: '某公司一笔300万付款流向了诈骗账户，事后查发现是有人偷偷把供应商系统里的银行账号改了，但找不到操作记录。' },
+      after: { title: '现在：账号修改需三方同意', desc: '供应商银行账号修改需要财务、采购、内审三方电子签名才能生效，且每次修改永久留痕。' }
+    },
+    promise: '我们承诺：IT部门的所有特权操作都会被独立审计节点监督，公司IT人员无法"偷偷改数据"。'
   },
   {
-    id: 'audit',
-    num: '08',
-    icon: '审',
-    name: '内审与风控',
-    desc: '审计线索、异常告警、风险评估',
-    risk: 'low',
-    riskLabel: '监督执行',
-    subtitle: '从事后审计到实时风控',
-    intro: '内审与风控部门在区块链治理中扮演特殊角色——它不是被监督方，而是监督的执行者。区块链化的价值，是让传统的"事后抽样审计"升级为"实时全量风控+全程留痕"，并保证内审本身的独立性。',
-    effects: [
-      { title: '实时全量监控', desc: '7×24小时智能合约扫描全链数据，从月度抽样升级为实时全量' },
-      { title: '内审独立性保障', desc: '内审节点物理独立部署，可绕过被审计部门直接取数' },
-      { title: '告警不可销毁', desc: '智能合约触发的所有告警事件上链，无法被关闭、忽略或删除' },
-      { title: '审计底稿存证', desc: '审计工作底稿哈希上链，审计师与被审计方"协商修改"的空间被消除' }
+    id: 'audit', num: '八', name: '内审与风控',
+    desc: '审计、风险监控',
+    tag: '监督执行',
+    subtitle: '从"事后查账"到"实时监控"',
+    intro: '过去内审一年来一两次、抽样查账，发现问题已经过了大半年。升级之后，系统替代内审做"全量24小时监控"，内审专注于处理告警、深度调查。最关键的是，内审这次将向董事会而非总经理汇报，确保独立性。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '内审被管理层压制', desc: '过去内审向总经理汇报，发现总经理本人有问题时不敢上报。' },
+      { q: '现在怎么解决？', title: '汇报关系上提到董事会', desc: '内审今后直接向董事会和监事会汇报，组织上不再受管理层管辖。' },
+      { q: '我能看到什么？', title: '风险驾驶舱', desc: '系统的告警事件、内审的处置情况、月度风险简报，都会同步给您。' },
+      { q: '系统会主动报警吗？', title: '24小时全量扫描', desc: '系统对每一笔交易实时扫描，发现异常立即报警，不再依赖人工抽样。' }
     ],
-    dataItems: [
-      { tag: '审计取数', text: '内审每次取数的人员、范围、时间、用途' },
-      { tag: '告警事件', text: '智能合约触发的告警：规则编号、命中数据、级别' },
-      { tag: '审计底稿', text: '工作底稿的哈希值（原文存私有存储）' },
-      { tag: '审计意见', text: '审计意见的形成过程、版本变更、最终结论' },
-      { tag: '处置决定', text: '对告警的处置：关闭/升级/移交纪检/移交司法' }
-    ],
-    contracts: [
-      '异常监控合约：拆单、夜间交易、价格偏离等7类规则',
-      '关联交易合约：股东穿透、亲属比对、空壳识别',
-      '合规审查合约：三公经费、授权边界、招投标合规',
-      '审计取证合约：一键调取证据链、跨系统数据勾稽'
-    ],
-    integration: '内审节点托管于第三方数据中心，物理隔离于公司IT管控。节点根私钥采用多签，需内审负责人+监事会主席+审计委主席三方中的两方签署。审计驾驶舱实时同步至董事会、监事会、外部审计机构。'
+    stories: {
+      before: { title: '过去：内审报告"被修改"', desc: '某公司内审发现高管违规，但报告在递交董事会前被总经理压下来"修改"了，最后董事会看到的版本"问题不严重"。' },
+      after: { title: '现在：原始结论无法被改', desc: '内审的每一份原始报告都会哈希上链，任何修改都会留下痕迹，董事会能看到完整版本变化历史。' }
+    },
+    promise: '我们承诺：内审部门将组织上独立于管理层，所有审计结论同步给董事会、监事会、外部会计师，无法被任何一方"压下"。'
   },
   {
-    id: 'board',
-    num: '09',
-    icon: '董',
-    name: '董事会与股东会',
-    desc: '决议、表决、信息披露、股东监督',
-    risk: 'high',
-    riskLabel: '核心反腐',
-    subtitle: '公司治理的最高层链上化',
-    intro: '董事会与股东大会的决议是公司治理的最高指令。传统模式下，会议纪要可能被事后修改、表决记录可能被"调整"。区块链化让每一项重大决策从动议到表决都成为不可磨灭的链上事实。',
-    effects: [
-      { title: '决议永久存证', desc: '会议通知、议程、提案、表决结果、会议纪要全部上链' },
-      { title: '个人表决留痕', desc: '每位董事的表决意见单独存证，事后无法修改"我投了反对票"' },
-      { title: '信息披露及时性', desc: '重大事项披露时间被链上时间戳锁定，杜绝"延迟披露"' },
-      { title: '股东穿透监督', desc: '主要股东可通过节点直接查询经营数据，无需依赖管理层报送' }
+    id: 'board', num: '九', name: '董事会与股东会',
+    desc: '决议、表决、信息披露',
+    tag: '反贪腐核心',
+    subtitle: '让最高决策也无法事后修改',
+    intro: '董事会决议是公司治理的"最高指令"。过去会议纪要可能被事后修改、表决记录可能被"调整"。升级之后，每一项决议从动议到表决都成为不可磨灭的事实，每位董事/股东的表决意见单独存证。',
+    investorConcerns: [
+      { q: '我担心的是什么？', title: '会议纪要被改', desc: '会议结束后，纪要在送审时被悄悄修改了关键措辞，让某项决议看起来更"合规"。' },
+      { q: '现在怎么解决？', title: '纪要哈希即刻锁定', desc: '会议纪要在生效那一刻就上链，任何后续修改都需要重新走流程并留下痕迹。' },
+      { q: '我能看到什么？', title: '完整决议链', desc: '股东可以查看每一项重大决议的提案、讨论摘要、每位董事的表决意见、最终结果。' },
+      { q: '系统会主动报警吗？', title: '披露及时性监督', desc: '重大事项触发后，系统自动倒计时披露期限，逾期未披露立即告警。' }
     ],
-    dataItems: [
-      { tag: '会议召集', text: '会议通知、议程、参会人员、会议日期' },
-      { tag: '提案与议案', text: '提案内容、提案人、相关材料哈希' },
-      { tag: '表决记录', text: '每位董事/股东的表决意见、表决时间' },
-      { tag: '会议纪要', text: '会议纪要原文哈希、签字人、生效时间' },
-      { tag: '信息披露', text: '重大事项披露内容、披露时间、目标对象' }
-    ],
-    contracts: [
-      '会议合规合约：法定通知期限、出席人数自动校验',
-      '表决统计合约：自动计票、按持股比例加权',
-      '披露及时性合约：重大事项触发后T+N日自动倒计时',
-      '股东查询合约：股东节点查询行为留痕但不可阻止'
-    ],
-    integration: '建设独立的董事会管理系统（董秘办使用），与链直接集成。股东监督平台为只读门户，预设结构化查询接口（如"过去一年超过净资产1%的支出"、"前十大供应商关联交易"），支持主要股东和监事会成员登录查询。'
+    stories: {
+      before: { title: '过去：董事说"我没投赞成票"', desc: '某公司一项有争议决议事后出问题，几位董事都声称自己投了反对票，但纸质会议记录已经被改得面目全非。' },
+      after: { title: '现在：每位董事的票永久存证', desc: '每位董事的表决意见用电子签名单独存证，事后无人可以修改"我当时投的什么票"。' }
+    },
+    promise: '我们承诺：所有董事会和股东会决议、表决记录、会议纪要都同步给全体股东查询，您不会再被"决议变形记"。'
   }
 ];
 
-const grid = document.getElementById('deptGrid');
-departments.forEach((d, idx) => {
-  const card = document.createElement('a');
-  card.className = 'dept-card fade-in';
-  card.href = '#';
-  card.style.transitionDelay = (idx * 0.05) + 's';
-  card.innerHTML = `
-    <div class="dept-num">
-      <span>// ${d.num}</span>
-      <span class="risk ${d.risk}">${d.riskLabel}</span>
+const list = document.getElementById('deptList');
+departments.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'dept-row';
+  row.innerHTML = `
+    <div class="dept-num">${d.num}</div>
+    <div class="dept-info">
+      <h4>${d.name}</h4>
+      <p>${d.desc}</p>
     </div>
-    <div class="dept-icon">${d.icon}</div>
-    <div class="dept-name">${d.name}</div>
-    <div class="dept-desc">${d.desc}</div>
-    <div class="dept-arrow">
-      查看完整方案
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
+    <div class="dept-tag">
+      <strong>${d.tag}</strong>
+      ${d.subtitle}
     </div>
+    <div class="dept-arrow">→</div>
   `;
-  card.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(d);
-  });
-  grid.appendChild(card);
+  row.addEventListener('click', () => openModal(d));
+  list.appendChild(row);
 });
 
 const overlay = document.getElementById('modalOverlay');
@@ -1756,59 +1155,48 @@ const modalContent = document.getElementById('modalContent');
 function openModal(d) {
   modalContent.innerHTML = `
     <button class="modal-close" onclick="closeModal()">×</button>
-    <div class="modal-tag">Department · ${d.num} / 09</div>
+    <div class="modal-tag">第 ${d.num} 个板块 · ${d.tag}</div>
     <h2>${d.name}</h2>
     <p class="modal-subtitle">${d.subtitle}</p>
 
     <div class="modal-section">
-      <h3><span class="num">I.</span>板块定位</h3>
+      <div class="modal-section-label">— 一句话讲清楚 —</div>
       <p>${d.intro}</p>
     </div>
 
     <div class="modal-section">
-      <h3><span class="num">II.</span>区块链化效果</h3>
-      <div class="feature-grid">
-        ${d.effects.map(e => `
-          <div class="feature-item">
-            <h4>${e.title}</h4>
-            <p>${e.desc}</p>
+      <div class="modal-section-label">— 投资人最关心的四个问题 —</div>
+      <div class="concern-grid">
+        ${d.investorConcerns.map(c => `
+          <div class="concern-item">
+            <div class="concern-q">${c.q}</div>
+            <h5>${c.title}</h5>
+            <p>${c.desc}</p>
           </div>
         `).join('')}
       </div>
     </div>
 
     <div class="modal-section">
-      <h3><span class="num">III.</span>上链数据范围</h3>
-      <ul class="data-list">
-        ${d.dataItems.map(i => `
-          <li>
-            <strong>${i.tag}</strong>
-            ${i.text}
-          </li>
-        `).join('')}
-      </ul>
-    </div>
-
-    <div class="modal-section">
-      <h3><span class="num">IV.</span>核心智能合约</h3>
-      <div class="flow-diagram">
-        ${d.contracts.map((c, i) => `
-          <div class="flow-step">
-            <div class="flow-step-num">SC.${String(i+1).padStart(2,'0')}</div>
-            <div class="flow-step-content">
-              <strong>${c.split('：')[0]}</strong>
-              <span>${c.split('：')[1] || ''}</span>
-            </div>
-          </div>
-        `).join('')}
+      <div class="modal-section-label">— 一个真实场景的对比 —</div>
+      <div class="story-grid">
+        <div class="story-col before">
+          <div class="story-label">过去会发生什么</div>
+          <h5>${d.stories.before.title}</h5>
+          <p>${d.stories.before.desc}</p>
+        </div>
+        <div class="story-col after">
+          <div class="story-label">升级后会怎样</div>
+          <h5>${d.stories.after.title}</h5>
+          <p>${d.stories.after.desc}</p>
+        </div>
       </div>
     </div>
 
     <div class="modal-section">
-      <h3><span class="num">V.</span>与现有系统集成</h3>
-      <div class="callout">
-        <h4>实施策略</h4>
-        <p>${d.integration}</p>
+      <div class="modal-section-label">— 我们对您的承诺 —</div>
+      <div style="padding: 24px 28px; background: var(--bg-dark); color: #f3ede4; border-left: 3px solid var(--accent);">
+        <p style="font-family: var(--serif); font-size: 17px; line-height: 1.8; margin: 0; color: #f3ede4;">${d.promise}</p>
       </div>
     </div>
   `;
@@ -1828,22 +1216,6 @@ overlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
-
-// 入场动画
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// 触发首屏动画
-setTimeout(() => {
-  document.querySelectorAll('.dept-card').forEach(c => c.classList.add('visible'));
-}, 100);
 </script>
 
 </body>
